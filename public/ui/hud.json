@@ -10,7 +10,7 @@
           "Score: 0"
         ],
         "properties": {
-          "fontsize": "{11}",
+          "fontsize": 11,
           "color": "#00ffcc",
           "name": "score-label"
         },
@@ -23,7 +23,7 @@
           "Moves: 0"
         ],
         "properties": {
-          "fontsize": "{11}",
+          "fontsize": 11,
           "color": "#ffcc00",
           "name": "moves-label"
         },
@@ -36,7 +36,7 @@
           "Level 1"
         ],
         "properties": {
-          "fontsize": "{11}",
+          "fontsize": 11,
           "color": "#ff66ff",
           "name": "level-label"
         },
@@ -49,7 +49,7 @@
           "0:00"
         ],
         "properties": {
-          "fontsize": "{11}",
+          "fontsize": 11,
           "color": "#66ff66",
           "name": "time-label"
         },
@@ -60,7 +60,7 @@
         "type": "custom",
         "children": [],
         "properties": {
-          "fontsize": "{11}",
+          "fontsize": 11,
           "color": "#ff8844",
           "name": "combo-label"
         },
@@ -73,7 +73,7 @@
           "Campaign"
         ],
         "properties": {
-          "fontsize": "{11}",
+          "fontsize": 11,
           "color": "#88ccff",
           "name": "mode-label"
         },
@@ -84,7 +84,7 @@
         "type": "custom",
         "children": [],
         "properties": {
-          "fontsize": "{9}",
+          "fontsize": 9,
           "color": "#4488ff",
           "name": "freeze-label"
         },
@@ -93,8 +93,8 @@
     ],
     "properties": {
       "flexdirection": "row",
-      "gap": "{10}",
-      "padding": "{8}"
+      "gap": "10",
+      "padding": "8"
     },
     "dataUid": "uid-1"
   },

@@ -10,12 +10,12 @@
           "UNDO"
         ],
         "properties": {
-          "fontsize": "{10}",
+          "fontsize": 10,
           "color": "#ffcc00",
           "name": "btn-undo",
           "cursor": "pointer",
-          "padding": "{6}",
-          "borderradius": "{3}",
+          "padding": "6",
+          "borderradius": "3",
           "backgroundcolor": "#221a00",
           "textalign": "center"
         },
@@ -28,12 +28,12 @@
           "HINT"
         ],
         "properties": {
-          "fontsize": "{10}",
+          "fontsize": 10,
           "color": "#00ffcc",
           "name": "btn-hint",
           "cursor": "pointer",
-          "padding": "{6}",
-          "borderradius": "{3}",
+          "padding": "6",
+          "borderradius": "3",
           "backgroundcolor": "#001a11",
           "textalign": "center"
         },
@@ -46,12 +46,12 @@
           "FREEZE"
         ],
         "properties": {
-          "fontsize": "{10}",
+          "fontsize": 10,
           "color": "#ff66ff",
           "name": "btn-freeze",
           "cursor": "pointer",
-          "padding": "{6}",
-          "borderradius": "{3}",
+          "padding": "6",
+          "borderradius": "3",
           "backgroundcolor": "#220022",
           "textalign": "center"
         },
@@ -61,25 +61,61 @@
         "sourceTag": "text",
         "type": "custom",
         "children": [
-          "RESTART"
+          "LOCK"
         ],
         "properties": {
-          "fontsize": "{10}",
-          "color": "#ff4444",
-          "name": "btn-restart",
+          "fontsize": 10,
+          "color": "#4488ff",
+          "name": "btn-lock",
           "cursor": "pointer",
-          "padding": "{6}",
-          "borderradius": "{3}",
-          "backgroundcolor": "#220000",
+          "padding": "6",
+          "borderradius": "3",
+          "backgroundcolor": "#001122",
           "textalign": "center"
         },
         "dataUid": "uid-5"
+      },
+      {
+        "sourceTag": "text",
+        "type": "custom",
+        "children": [
+          "REVEAL"
+        ],
+        "properties": {
+          "fontsize": 10,
+          "color": "#44ff88",
+          "name": "btn-reveal",
+          "cursor": "pointer",
+          "padding": "6",
+          "borderradius": "3",
+          "backgroundcolor": "#002211",
+          "textalign": "center"
+        },
+        "dataUid": "uid-6"
+      },
+      {
+        "sourceTag": "text",
+        "type": "custom",
+        "children": [
+          "RESTART"
+        ],
+        "properties": {
+          "fontsize": 10,
+          "color": "#ff4444",
+          "name": "btn-restart",
+          "cursor": "pointer",
+          "padding": "6",
+          "borderradius": "3",
+          "backgroundcolor": "#220000",
+          "textalign": "center"
+        },
+        "dataUid": "uid-7"
       }
     ],
     "properties": {
       "flexdirection": "row",
-      "gap": "{8}",
-      "padding": "{6}"
+      "gap": "6",
+      "padding": "6"
     },
     "dataUid": "uid-1"
   },
@@ -91,7 +127,7 @@
         "column": 0
       },
       "end": {
-        "line": 5,
+        "line": 7,
         "column": 12
       }
     },
@@ -132,6 +168,26 @@
       },
       "end": {
         "line": 4,
+        "column": 156
+      }
+    },
+    "uid-6": {
+      "start": {
+        "line": 5,
+        "column": 2
+      },
+      "end": {
+        "line": 5,
+        "column": 160
+      }
+    },
+    "uid-7": {
+      "start": {
+        "line": 6,
+        "column": 2
+      },
+      "end": {
+        "line": 6,
         "column": 162
       }
     }

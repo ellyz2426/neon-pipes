@@ -10,7 +10,7 @@
           "NEON PIPES"
         ],
         "properties": {
-          "fontsize": "{28}",
+          "fontsize": 28,
           "fontweight": "bold",
           "color": "#00ffff"
         },
@@ -23,7 +23,7 @@
           "Flow Puzzle VR"
         ],
         "properties": {
-          "fontsize": "{12}",
+          "fontsize": 12,
           "color": "#00aacc",
           "name": "subtitle"
         },
@@ -36,7 +36,7 @@
           "Level 1 -- Novice"
         ],
         "properties": {
-          "fontsize": "{10}",
+          "fontsize": 10,
           "color": "#888888",
           "name": "level-display"
         },
@@ -53,12 +53,12 @@
               "PLAY"
             ],
             "properties": {
-              "fontsize": "{14}",
+              "fontsize": 14,
               "color": "#00ffcc",
               "name": "btn-play",
               "cursor": "pointer",
-              "padding": "{6}",
-              "borderradius": "{4}",
+              "padding": "6",
+              "borderradius": "4",
               "backgroundcolor": "#002222",
               "textalign": "center"
             },
@@ -71,12 +71,12 @@
               "LEADERBOARD"
             ],
             "properties": {
-              "fontsize": "{14}",
+              "fontsize": 14,
               "color": "#ffcc00",
               "name": "btn-scores",
               "cursor": "pointer",
-              "padding": "{6}",
-              "borderradius": "{4}",
+              "padding": "6",
+              "borderradius": "4",
               "backgroundcolor": "#222200",
               "textalign": "center"
             },
@@ -89,12 +89,12 @@
               "ACHIEVEMENTS"
             ],
             "properties": {
-              "fontsize": "{14}",
+              "fontsize": 14,
               "color": "#ff66ff",
               "name": "btn-achievements",
               "cursor": "pointer",
-              "padding": "{6}",
-              "borderradius": "{4}",
+              "padding": "6",
+              "borderradius": "4",
               "backgroundcolor": "#220022",
               "textalign": "center"
             },
@@ -107,12 +107,12 @@
               "STATS"
             ],
             "properties": {
-              "fontsize": "{14}",
+              "fontsize": 14,
               "color": "#66ff66",
               "name": "btn-stats",
               "cursor": "pointer",
-              "padding": "{6}",
-              "borderradius": "{4}",
+              "padding": "6",
+              "borderradius": "4",
               "backgroundcolor": "#002200",
               "textalign": "center"
             },
@@ -125,12 +125,12 @@
               "PIPE SKINS"
             ],
             "properties": {
-              "fontsize": "{14}",
+              "fontsize": 14,
               "color": "#ff8844",
               "name": "btn-themes",
               "cursor": "pointer",
-              "padding": "{6}",
-              "borderradius": "{4}",
+              "padding": "6",
+              "borderradius": "4",
               "backgroundcolor": "#221100",
               "textalign": "center"
             },
@@ -143,12 +143,12 @@
               "SETTINGS"
             ],
             "properties": {
-              "fontsize": "{14}",
+              "fontsize": 14,
               "color": "#aaaaaa",
               "name": "btn-settings",
               "cursor": "pointer",
-              "padding": "{6}",
-              "borderradius": "{4}",
+              "padding": "6",
+              "borderradius": "4",
               "backgroundcolor": "#1a1a1a",
               "textalign": "center"
             },
@@ -161,12 +161,12 @@
               "HELP"
             ],
             "properties": {
-              "fontsize": "{14}",
+              "fontsize": 14,
               "color": "#8888ff",
               "name": "btn-help",
               "cursor": "pointer",
-              "padding": "{6}",
-              "borderradius": "{4}",
+              "padding": "6",
+              "borderradius": "4",
               "backgroundcolor": "#111122",
               "textalign": "center"
             },
@@ -175,8 +175,8 @@
         ],
         "properties": {
           "flexdirection": "column",
-          "gap": "{6}",
-          "margintop": "{8}"
+          "gap": "6",
+          "margintop": "8"
         },
         "dataUid": "uid-5"
       }
@@ -184,8 +184,8 @@
     "properties": {
       "flexdirection": "column",
       "alignitems": "center",
-      "gap": "{12}",
-      "padding": "{16}"
+      "gap": "12",
+      "padding": "16"
     },
     "dataUid": "uid-1"
   },

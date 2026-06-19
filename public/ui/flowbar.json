@@ -10,7 +10,7 @@
           "Flow: 0%"
         ],
         "properties": {
-          "fontsize": "{10}",
+          "fontsize": 10,
           "color": "#00ffcc",
           "name": "flow-text"
         },
@@ -18,7 +18,7 @@
       }
     ],
     "properties": {
-      "padding": "{8}"
+      "padding": "8"
     },
     "dataUid": "uid-1"
   },

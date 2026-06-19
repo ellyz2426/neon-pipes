@@ -213,6 +213,27 @@ const ACHIEVEMENTS: Achievement[] = [
   { id: 'welcome', name: 'Welcome', desc: 'Play your first game', check: s => s.gamesPlayed >= 1 },
   { id: 'moves_100', name: 'Busy Plumber', desc: 'Make 100 total moves', check: s => s.totalMoves >= 100 },
   { id: 'moves_1000', name: 'Pipe Twister', desc: 'Make 1000 total moves', check: s => s.totalMoves >= 1000 },
+  // Round 3 achievements
+  { id: 'score_50k', name: 'Score Titan', desc: 'Score 50,000 points', check: s => s.totalScore >= 50000 },
+  { id: 'score_100k', name: 'Score God', desc: 'Score 100,000 points', check: s => s.totalScore >= 100000 },
+  { id: 'combo_15', name: 'Combo Legend', desc: 'Reach x15 combo', check: s => s.bestCombo >= 15 },
+  { id: 'combo_20', name: 'Combo God', desc: 'Reach x20 combo', check: s => s.bestCombo >= 20 },
+  { id: 'pipes_1000', name: 'Pipeline Empire', desc: 'Connect 1000 pipes', check: s => s.totalPipes >= 1000 },
+  { id: 'pipes_5000', name: 'Pipe Colossus', desc: 'Connect 5000 pipes', check: s => s.totalPipes >= 5000 },
+  { id: 'speed_10', name: 'Blitz Runner', desc: 'Complete level in under 10s', check: s => s.fastestClear < 10 && s.fastestClear > 0 },
+  { id: 'perfect_5', name: 'Precision Expert', desc: '5 perfect levels', check: s => s.perfectLevels >= 5 },
+  { id: 'perfect_10', name: 'Precision Master', desc: '10 perfect levels', check: s => s.perfectLevels >= 10 },
+  { id: 'endless_50', name: 'Endless Veteran', desc: 'Clear 50 endless levels', check: s => s.endlessClears >= 50 },
+  { id: 'daily_14', name: 'Daily Devotee', desc: 'Complete 14 daily challenges', check: s => s.dailyDone >= 14 },
+  { id: 'daily_30', name: 'Monthly Master', desc: 'Complete 30 daily challenges', check: s => s.dailyDone >= 30 },
+  { id: 'games_100', name: 'Century Player', desc: 'Play 100 games', check: s => s.gamesPlayed >= 100 },
+  { id: 'locks_used', name: 'Locksmith', desc: 'Lock 10 pipes', check: s => s.locksUsed >= 10 },
+  { id: 'reveals_used', name: 'Oracle', desc: 'Use reveal 5 times', check: s => s.revealsUsed >= 5 },
+  { id: 'no_powerup', name: 'Purist', desc: 'Win 5 levels without power-ups', check: s => s.noPowerupWins >= 5 },
+  { id: 'level_30', name: 'Level 30', desc: 'Reach player level 30', check: s => s.level >= 30 },
+  { id: 'level_40', name: 'Level 40', desc: 'Reach player level 40', check: s => s.level >= 40 },
+  { id: 'two_hundred_flows', name: 'Flow Emperor', desc: 'Complete 200 levels', check: s => s.levelClears >= 200 },
+  { id: 'five_hundred_flows', name: 'Flow Deity', desc: 'Complete 500 levels', check: s => s.levelClears >= 500 },
 ];
 
 interface CareerStats {
@@ -223,6 +244,10 @@ interface CareerStats {
   campaignLevel: number; skinsUnlocked: number; noMistakeLevels: number; speedChain: number;
   modesPlayed: Set<string>; themesUsed: Set<string>;
   selectedSkin: number; selectedTheme: number;
+  // Round 3 additions
+  locksUsed: number; revealsUsed: number; noPowerupWins: number;
+  endlessHighScore: number; endlessBestLevel: number;
+  autoLockEnabled: boolean;
 }
 
 const LEVEL_TITLES = ['Novice', 'Apprentice', 'Journeyman', 'Plumber', 'Pipe Fitter', 'Flow Master',
@@ -502,6 +527,13 @@ class GameStateManager {
       const d = JSON.parse(raw);
       d.modesPlayed = new Set(d.modesPlayed || []);
       d.themesUsed = new Set(d.themesUsed || []);
+      // Backwards compat for round 3 fields
+      d.locksUsed = d.locksUsed || 0;
+      d.revealsUsed = d.revealsUsed || 0;
+      d.noPowerupWins = d.noPowerupWins || 0;
+      d.endlessHighScore = d.endlessHighScore || 0;
+      d.endlessBestLevel = d.endlessBestLevel || 0;
+      d.autoLockEnabled = d.autoLockEnabled || false;
       return d;
     }
     return {
@@ -512,6 +544,9 @@ class GameStateManager {
       campaignLevel: 0, skinsUnlocked: 1, noMistakeLevels: 0, speedChain: 0,
       modesPlayed: new Set(), themesUsed: new Set(),
       selectedSkin: 0, selectedTheme: 0,
+      locksUsed: 0, revealsUsed: 0, noPowerupWins: 0,
+      endlessHighScore: 0, endlessBestLevel: 0,
+      autoLockEnabled: false,
     };
   }
 
@@ -736,11 +771,11 @@ class GameStateManager {
 // PIPE MESH BUILDER
 // ============================================================
 
-function buildPipeMesh(pipeType: PipeType, skin: PipeSkin, theme: Theme, isSource: boolean, isDrain: boolean): Group {
+function buildPipeMesh(pipeType: PipeType, skin: PipeSkin, theme: Theme, isSource: boolean, isDrain: boolean, isLocked = false): Group {
   const g = new Group();
-  const baseColor = isSource ? theme.source : isDrain ? theme.drain : skin.color;
-  const emissiveColor = isSource ? 0x005522 : isDrain ? 0x550000 : skin.emissive;
-  const glowColor = isSource ? theme.source : isDrain ? theme.drain : skin.glowColor;
+  const baseColor = isSource ? theme.source : isDrain ? theme.drain : isLocked ? 0x4488ff : skin.color;
+  const emissiveColor = isSource ? 0x005522 : isDrain ? 0x550000 : isLocked ? 0x002244 : skin.emissive;
+  const glowColor = isSource ? theme.source : isDrain ? theme.drain : isLocked ? 0x4488ff : skin.glowColor;
 
   const pipeMat = new MeshStandardMaterial({
     color: baseColor, emissive: emissiveColor, emissiveIntensity: 0.5,
@@ -1037,6 +1072,12 @@ class GameUISystem extends createSystem({
         this.updateSettingsDisplay();
         this.game.saveStats();
       });
+      this.wireBtn(e, 'btn-autolock', () => {
+        this.game.stats.autoLockEnabled = !this.game.stats.autoLockEnabled;
+        this.updateSettingsDisplay();
+        this.game.saveStats();
+        this.showToast(this.game.stats.autoLockEnabled ? 'Auto-lock ON' : 'Auto-lock OFF');
+      });
       this.wireBtn(e, 'btn-back', () => this.game.state = 'title');
     });
 
@@ -1100,6 +1141,41 @@ class GameUISystem extends createSystem({
         if (this.game.state !== 'playing') return;
         startGame(this.game, this.audio);
       });
+      this.wireBtn(e, 'btn-lock', () => {
+        if (this.game.state !== 'playing') return;
+        // Lock a correctly-placed pipe: find connected pipes that match solved state
+        let locked = false;
+        for (let y = 0; y < this.game.gridSize; y++) {
+          for (let x = 0; x < this.game.gridSize; x++) {
+            const cell = this.game.grid[y][x];
+            if (cell.isLocked) continue;
+            if (cell.pipeType === this.game.solvedGrid[y][x]) {
+              cell.isLocked = true;
+              locked = true;
+              this.game.stats.locksUsed++;
+              rebuildCellMesh(this.game, x, y);
+              this.audio.playSfx('connect');
+              this.showToast('Pipe locked in place!');
+              // Particle burst
+              const pos = getCellWorldPos(this.game, x, y);
+              particlesRef.burst(pos.x, pos.y, pos.z, 0x4488ff, 8);
+              this.game.saveStats();
+              return;
+            }
+          }
+        }
+        if (!locked) this.showToast('No correct pipes to lock');
+      });
+      this.wireBtn(e, 'btn-reveal', () => {
+        if (this.game.state !== 'playing') return;
+        // Reveal: briefly show solution overlay
+        this.game.stats.revealsUsed++;
+        this.game.saveStats();
+        this.showToast('Solution revealed for 2s!');
+        this.audio.playSfx('click');
+        revealSolution(this.game, true);
+        setTimeout(() => revealSolution(this.game, false), 2000);
+      });
     });
 
     wirePanel('campaignPanel', 'campaign', (e) => {
@@ -1135,6 +1211,7 @@ class GameUISystem extends createSystem({
     this.setText(e, 'sfx-vol', `${Math.round(this.audio.sfxVol * 100)}`);
     this.setText(e, 'music-vol', `${Math.round(this.audio.musicVol * 100)}`);
     this.setText(e, 'theme-name', THEMES[this.game.stats.selectedTheme].name);
+    this.setText(e, 'autolock-label', `Auto-Lock: ${this.game.stats.autoLockEnabled ? 'ON' : 'OFF'}`);
   }
 
   private updateLeaderboard() {
@@ -1175,6 +1252,8 @@ class GameUISystem extends createSystem({
       `Play Time: ${Math.floor(s.playTime / 60)}:${String(Math.floor(s.playTime) % 60).padStart(2, '0')}`,
       `Perfect Levels: ${s.perfectLevels}`,
       `Level: ${s.level} (${getLevelTitle(s.level)})`,
+      `Endless Best: Lvl ${s.endlessBestLevel}`,
+      `Achievements: ${this.game.unlockedAchievements.size}/${ACHIEVEMENTS.length}`,
     ];
     labels.forEach((l, i) => this.setText(e, `stat${i}`, l));
   }
@@ -1308,6 +1387,7 @@ class GameLogicSystem extends createSystem({}) {
     const canvas = this.renderer.domElement;
     canvas.addEventListener('click', (e: MouseEvent) => this.handleClick(e, false));
     canvas.addEventListener('contextmenu', (e: MouseEvent) => { e.preventDefault(); this.handleClick(e, true); });
+    canvas.addEventListener('mousemove', (e: MouseEvent) => this.handleHover(e));
 
     // Keyboard
     document.addEventListener('keydown', (e: KeyboardEvent) => {
@@ -1318,11 +1398,36 @@ class GameLogicSystem extends createSystem({}) {
       if (e.key === 'r' && this.game.state === 'playing') {
         startGame(this.game, this.audio);
       }
+      // Number keys for power-ups
+      if (e.key === 'z' && this.game.state === 'playing') {
+        const move = this.game.undoLastMove();
+        if (move) {
+          this.game.undosUsed++;
+          rebuildCellMesh(this.game, move.x, move.y);
+          this.game.checkConnections();
+          updateGridVisuals(this.game);
+          this.audio.playSfx('click');
+          this.ui.showToast('Move undone');
+        }
+      }
     });
   }
 
   private handleClick(e: MouseEvent, ccw: boolean) {
     if (this.game.state !== 'playing') return;
+    const cell = this.raycastToGrid(e);
+    if (!cell) return;
+    this.rotatePipe(cell[0], cell[1], ccw);
+  }
+
+  private handleHover(e: MouseEvent) {
+    if (this.game.state !== 'playing') { hideHoverHighlight(); return; }
+    const cell = this.raycastToGrid(e);
+    if (!cell) { hideHoverHighlight(); return; }
+    updateHoverHighlight(this.game, cell[0], cell[1]);
+  }
+
+  private raycastToGrid(e: MouseEvent): [number, number] | null {
     // Raycast to find which grid cell was clicked
     const rect = this.renderer.domElement.getBoundingClientRect();
     const ndcX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
@@ -1336,9 +1441,9 @@ class GameLogicSystem extends createSystem({}) {
 
     // Grid is at y=1.4 (board height), facing up
     const boardY = 1.4;
-    if (ray.y === 0) return;
+    if (ray.y === 0) return null;
     const t = (boardY - origin.y) / ray.y;
-    if (t < 0) return;
+    if (t < 0) return null;
     const hitX = origin.x + ray.x * t;
     const hitZ = origin.z + ray.z * t;
 
@@ -1347,8 +1452,8 @@ class GameLogicSystem extends createSystem({}) {
     const gx = Math.floor((hitX + halfGrid) / this.game.cellSize);
     const gy = Math.floor((hitZ + halfGrid) / this.game.cellSize);
 
-    if (gx < 0 || gx >= this.game.gridSize || gy < 0 || gy >= this.game.gridSize) return;
-    this.rotatePipe(gx, gy, ccw);
+    if (gx < 0 || gx >= this.game.gridSize || gy < 0 || gy >= this.game.gridSize) return null;
+    return [gx, gy];
   }
 
   rotatePipe(x: number, y: number, ccw: boolean) {
@@ -1385,6 +1490,9 @@ class GameLogicSystem extends createSystem({}) {
       this.particles.burst(pos.x, pos.y, pos.z, THEMES[this.game.stats.selectedTheme].flow, 12);
     }
 
+    // Auto-lock check after each rotation
+    checkAutoLock(this.game);
+
     // Check completion
     if (this.game.isComplete) {
       this.handleLevelComplete();
@@ -1414,8 +1522,17 @@ class GameLogicSystem extends createSystem({}) {
     if (this.game.mode === 'daily') s.dailyDone++;
     if (this.game.mode === 'zen') s.zenClears++;
     if (this.game.mode === 'timed') s.timedWins++;
-    if (this.game.mode === 'endless') s.endlessClears++;
+    if (this.game.mode === 'endless') {
+      s.endlessClears++;
+      // Track endless best level
+      if (this.game.level > s.endlessBestLevel) s.endlessBestLevel = this.game.level;
+    }
     if (this.game.mode === 'campaign') s.campaignLevel = Math.max(s.campaignLevel, this.game.level);
+
+    // Track powerup-free wins
+    if (this.game.hintsUsed === 0 && this.game.undosUsed === 0 && this.game.freezeTimer <= 0) {
+      s.noPowerupWins++;
+    }
 
     // XP
     const xpGain = Math.floor(score / 10) + this.game.connectedPipes * 5;
@@ -1469,6 +1586,9 @@ class GameLogicSystem extends createSystem({}) {
       setText('result-combo', `Best Combo: x${this.game.maxCombo}`);
       setText('result-rating', `Rating: ${rating}`);
       setText('result-pipes', `Pipes Connected: ${this.game.connectedPipes}`);
+      if (this.game.mode === 'endless') {
+        setText('result-title', `LEVEL ${this.game.level} COMPLETE!`);
+      }
     }
 
     // Big particle celebration
@@ -1649,7 +1769,7 @@ function rebuildCellMesh(game: GameStateManager, x: number, y: number) {
   }
   const theme = THEMES[game.stats.selectedTheme];
   const skin = PIPE_SKINS[game.stats.selectedSkin];
-  const mesh = buildPipeMesh(cell.pipeType, skin, theme, cell.isSource, cell.isDrain);
+  const mesh = buildPipeMesh(cell.pipeType, skin, theme, cell.isSource, cell.isDrain, cell.isLocked);
   const pos = getCellWorldPos(game, x, y);
   mesh.position.copy(pos);
   game.gridGroup.add(mesh);
@@ -1724,6 +1844,14 @@ function clearGrid(game: GameStateManager) {
   if (hintHighlightMesh?.parent) hintHighlightMesh.parent.remove(hintHighlightMesh);
   hintHighlightMesh = null;
   hintTimer = 0;
+  // Clear hover highlight
+  if (hoverHighlightMesh?.parent) hoverHighlightMesh.parent.remove(hoverHighlightMesh);
+  hoverHighlightMesh = null;
+  // Clear reveal overlays
+  for (const m of revealOverlays) {
+    if (m.parent) m.parent.remove(m);
+  }
+  revealOverlays = [];
 }
 
 function updateGridVisuals(game: GameStateManager) {
@@ -1873,6 +2001,99 @@ function updateFlowParticles(game: GameStateManager, delta: number) {
   }
 }
 
+// Reveal solution: show ghost pipes in solved position
+let revealOverlays: Mesh[] = [];
+
+function revealSolution(game: GameStateManager, show: boolean) {
+  // Clean up any existing overlays
+  for (const m of revealOverlays) {
+    if (m.parent) m.parent.remove(m);
+  }
+  revealOverlays = [];
+
+  if (!show) return;
+
+  const theme = THEMES[game.stats.selectedTheme];
+  for (let y = 0; y < game.gridSize; y++) {
+    for (let x = 0; x < game.gridSize; x++) {
+      const cell = game.grid[y][x];
+      if (cell.isLocked || cell.pipeType === game.solvedGrid[y][x]) continue;
+
+      // Show a ghost overlay of the solved pipe type
+      const connections = PIPE_CONNECTIONS[game.solvedGrid[y][x]];
+      const pos = getCellWorldPos(game, x, y);
+
+      // Draw translucent solution pipes
+      const g = new Group();
+      const pipeRadius = 0.012;
+      const halfCell = 0.05;
+      const ghostMat = new MeshBasicMaterial({
+        color: theme.flow, transparent: true, opacity: 0.35, blending: AdditiveBlending,
+      });
+
+      for (const dir of connections) {
+        const segGeo = new CylinderGeometry(pipeRadius, pipeRadius, halfCell, 6);
+        const seg = new Mesh(segGeo, ghostMat);
+        switch (dir) {
+          case 'up': seg.position.set(0, 0.02, -halfCell / 2); seg.rotation.x = Math.PI / 2; break;
+          case 'down': seg.position.set(0, 0.02, halfCell / 2); seg.rotation.x = Math.PI / 2; break;
+          case 'left': seg.position.set(-halfCell / 2, 0.02, 0); seg.rotation.z = Math.PI / 2; break;
+          case 'right': seg.position.set(halfCell / 2, 0.02, 0); seg.rotation.z = Math.PI / 2; break;
+        }
+        g.add(seg);
+      }
+      const hubGeo = new SphereGeometry(pipeRadius * 1.5, 6, 6);
+      const hub = new Mesh(hubGeo, ghostMat);
+      hub.position.y = 0.02;
+      g.add(hub);
+
+      g.position.copy(pos);
+      game.gridGroup.add(g);
+      revealOverlays.push(g as any);
+    }
+  }
+}
+
+// Hover highlight mesh
+let hoverHighlightMesh: Mesh | null = null;
+
+function updateHoverHighlight(game: GameStateManager, x: number, y: number) {
+  const theme = THEMES[game.stats.selectedTheme];
+  if (!hoverHighlightMesh) {
+    const geo = new PlaneGeometry(game.cellSize * 0.95, game.cellSize * 0.95);
+    const mat = new MeshBasicMaterial({
+      color: theme.accent, transparent: true, opacity: 0.12, blending: AdditiveBlending, side: DoubleSide,
+    });
+    hoverHighlightMesh = new Mesh(geo, mat);
+    hoverHighlightMesh.rotation.x = -Math.PI / 2;
+    game.gridGroup.add(hoverHighlightMesh);
+  }
+  const pos = getCellWorldPos(game, x, y);
+  hoverHighlightMesh.position.copy(pos);
+  hoverHighlightMesh.position.y += 0.001;
+  hoverHighlightMesh.visible = true;
+  (hoverHighlightMesh.material as MeshBasicMaterial).color.setHex(theme.accent);
+}
+
+function hideHoverHighlight() {
+  if (hoverHighlightMesh) hoverHighlightMesh.visible = false;
+}
+
+// Auto-lock: check all pipes against solved state and lock correct ones
+function checkAutoLock(game: GameStateManager) {
+  if (!game.stats.autoLockEnabled) return;
+  for (let y = 0; y < game.gridSize; y++) {
+    for (let x = 0; x < game.gridSize; x++) {
+      const cell = game.grid[y][x];
+      if (cell.isLocked) continue;
+      if (cell.pipeType === game.solvedGrid[y][x]) {
+        cell.isLocked = true;
+        rebuildCellMesh(game, x, y);
+      }
+    }
+  }
+}
+
 function startGame(game: GameStateManager, audio: AudioManager) {
   let size = game.gridSize;
 
@@ -1882,6 +2103,20 @@ function startGame(game: GameStateManager, audio: AudioManager) {
     const zone = CAMPAIGN_ZONES[zoneIdx];
     const levelInZone = (game.level - 1) % 6;
     size = zone.gridMin + Math.floor(levelInZone * (zone.gridMax - zone.gridMin) / Math.max(1, zone.levels - 1));
+    game.gridSize = size;
+  }
+
+  // Endless mode: progressive difficulty - grid grows every 3 levels
+  if (game.mode === 'endless') {
+    const baseSizes: Record<Difficulty, number> = { easy: 4, medium: 5, hard: 7 };
+    const base = baseSizes[game.difficulty] || 5;
+    size = Math.min(12, base + Math.floor((game.level - 1) / 3));
+    game.gridSize = size;
+  }
+
+  // Speed mode: always starts small but gets harder
+  if (game.mode === 'speed') {
+    size = Math.min(8, 4 + Math.floor((game.level - 1) / 2));
     game.gridSize = size;
   }
 

@@ -1,14 +1,14 @@
-<container flexDirection="column" alignItems="center" gap={12} padding={16}>
+<container flexDirection="column" alignItems="center" gap="12" padding="16">
   <text fontSize={28} fontWeight="bold" color="#00ffff">NEON PIPES</text>
   <text fontSize={12} color="#00aacc" name="subtitle">Flow Puzzle VR</text>
   <text fontSize={10} color="#888888" name="level-display">Level 1 -- Novice</text>
-  <container flexDirection="column" gap={6} marginTop={8}>
-    <text fontSize={14} color="#00ffcc" name="btn-play" cursor="pointer" padding={6} borderRadius={4} backgroundColor="#002222" textAlign="center">PLAY</text>
-    <text fontSize={14} color="#ffcc00" name="btn-scores" cursor="pointer" padding={6} borderRadius={4} backgroundColor="#222200" textAlign="center">LEADERBOARD</text>
-    <text fontSize={14} color="#ff66ff" name="btn-achievements" cursor="pointer" padding={6} borderRadius={4} backgroundColor="#220022" textAlign="center">ACHIEVEMENTS</text>
-    <text fontSize={14} color="#66ff66" name="btn-stats" cursor="pointer" padding={6} borderRadius={4} backgroundColor="#002200" textAlign="center">STATS</text>
-    <text fontSize={14} color="#ff8844" name="btn-themes" cursor="pointer" padding={6} borderRadius={4} backgroundColor="#221100" textAlign="center">PIPE SKINS</text>
-    <text fontSize={14} color="#aaaaaa" name="btn-settings" cursor="pointer" padding={6} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center">SETTINGS</text>
-    <text fontSize={14} color="#8888ff" name="btn-help" cursor="pointer" padding={6} borderRadius={4} backgroundColor="#111122" textAlign="center">HELP</text>
+  <container flexDirection="column" gap="6" marginTop="8">
+    <text fontSize={14} color="#00ffcc" name="btn-play" cursor="pointer" padding="6" borderRadius="4" backgroundColor="#002222" textAlign="center">PLAY</text>
+    <text fontSize={14} color="#ffcc00" name="btn-scores" cursor="pointer" padding="6" borderRadius="4" backgroundColor="#222200" textAlign="center">LEADERBOARD</text>
+    <text fontSize={14} color="#ff66ff" name="btn-achievements" cursor="pointer" padding="6" borderRadius="4" backgroundColor="#220022" textAlign="center">ACHIEVEMENTS</text>
+    <text fontSize={14} color="#66ff66" name="btn-stats" cursor="pointer" padding="6" borderRadius="4" backgroundColor="#002200" textAlign="center">STATS</text>
+    <text fontSize={14} color="#ff8844" name="btn-themes" cursor="pointer" padding="6" borderRadius="4" backgroundColor="#221100" textAlign="center">PIPE SKINS</text>
+    <text fontSize={14} color="#aaaaaa" name="btn-settings" cursor="pointer" padding="6" borderRadius="4" backgroundColor="#1a1a1a" textAlign="center">SETTINGS</text>
+    <text fontSize={14} color="#8888ff" name="btn-help" cursor="pointer" padding="6" borderRadius="4" backgroundColor="#111122" textAlign="center">HELP</text>
   </container>
 </container>

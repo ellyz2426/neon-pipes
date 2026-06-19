@@ -10,7 +10,7 @@
           "PIPE SKINS"
         ],
         "properties": {
-          "fontsize": "{18}",
+          "fontsize": 18,
           "fontweight": "bold",
           "color": "#ff8844"
         },
@@ -27,12 +27,12 @@
               "[*] Neon Cyan (Default)"
             ],
             "properties": {
-              "fontsize": "{9}",
+              "fontsize": 9,
               "color": "#00ffcc",
               "name": "skin0",
               "cursor": "pointer",
-              "padding": "{4}",
-              "borderradius": "{3}",
+              "padding": "4",
+              "borderradius": "3",
               "backgroundcolor": "#002222",
               "textalign": "center"
             },
@@ -45,12 +45,12 @@
               "[ ] Solar Flare (50 pipes)"
             ],
             "properties": {
-              "fontsize": "{9}",
+              "fontsize": 9,
               "color": "#ff6644",
               "name": "skin1",
               "cursor": "pointer",
-              "padding": "{4}",
-              "borderradius": "{3}",
+              "padding": "4",
+              "borderradius": "3",
               "backgroundcolor": "#221100",
               "textalign": "center"
             },
@@ -63,12 +63,12 @@
               "[ ] Plasma Pink (5K score)"
             ],
             "properties": {
-              "fontsize": "{9}",
+              "fontsize": 9,
               "color": "#ff66ff",
               "name": "skin2",
               "cursor": "pointer",
-              "padding": "{4}",
-              "borderradius": "{3}",
+              "padding": "4",
+              "borderradius": "3",
               "backgroundcolor": "#220022",
               "textalign": "center"
             },
@@ -81,12 +81,12 @@
               "[ ] Frost Blue (10 games)"
             ],
             "properties": {
-              "fontsize": "{9}",
+              "fontsize": 9,
               "color": "#4488ff",
               "name": "skin3",
               "cursor": "pointer",
-              "padding": "{4}",
-              "borderradius": "{3}",
+              "padding": "4",
+              "borderradius": "3",
               "backgroundcolor": "#001133",
               "textalign": "center"
             },
@@ -99,12 +99,12 @@
               "[ ] Toxic Green (x5 combo)"
             ],
             "properties": {
-              "fontsize": "{9}",
+              "fontsize": 9,
               "color": "#66ff44",
               "name": "skin4",
               "cursor": "pointer",
-              "padding": "{4}",
-              "borderradius": "{3}",
+              "padding": "4",
+              "borderradius": "3",
               "backgroundcolor": "#112200",
               "textalign": "center"
             },
@@ -117,12 +117,12 @@
               "[ ] Royal Gold (perfect game)"
             ],
             "properties": {
-              "fontsize": "{9}",
+              "fontsize": 9,
               "color": "#ffcc00",
               "name": "skin5",
               "cursor": "pointer",
-              "padding": "{4}",
-              "borderradius": "{3}",
+              "padding": "4",
+              "borderradius": "3",
               "backgroundcolor": "#222200",
               "textalign": "center"
             },
@@ -135,12 +135,12 @@
               "[ ] Void Purple (all modes)"
             ],
             "properties": {
-              "fontsize": "{9}",
+              "fontsize": 9,
               "color": "#8844ff",
               "name": "skin6",
               "cursor": "pointer",
-              "padding": "{4}",
-              "borderradius": "{3}",
+              "padding": "4",
+              "borderradius": "3",
               "backgroundcolor": "#110033",
               "textalign": "center"
             },
@@ -153,12 +153,12 @@
               "[ ] Inferno (80% accuracy)"
             ],
             "properties": {
-              "fontsize": "{9}",
+              "fontsize": 9,
               "color": "#ff4444",
               "name": "skin7",
               "cursor": "pointer",
-              "padding": "{4}",
-              "borderradius": "{3}",
+              "padding": "4",
+              "borderradius": "3",
               "backgroundcolor": "#220000",
               "textalign": "center"
             },
@@ -167,8 +167,8 @@
         ],
         "properties": {
           "flexdirection": "column",
-          "gap": "{3}",
-          "margintop": "{4}"
+          "gap": "3",
+          "margintop": "4"
         },
         "dataUid": "uid-3"
       },
@@ -179,15 +179,15 @@
           "BACK"
         ],
         "properties": {
-          "fontsize": "{10}",
+          "fontsize": 10,
           "color": "#666666",
           "name": "btn-back",
           "cursor": "pointer",
-          "padding": "{4}",
-          "borderradius": "{4}",
+          "padding": "4",
+          "borderradius": "4",
           "backgroundcolor": "#1a1a1a",
           "textalign": "center",
-          "margintop": "{6}"
+          "margintop": "6"
         },
         "dataUid": "uid-12"
       }
@@ -195,8 +195,8 @@
     "properties": {
       "flexdirection": "column",
       "alignitems": "center",
-      "gap": "{4}",
-      "padding": "{14}"
+      "gap": "4",
+      "padding": "14"
     },
     "dataUid": "uid-1"
   },

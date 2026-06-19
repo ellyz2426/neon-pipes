@@ -10,7 +10,7 @@
           "ACHIEVEMENTS"
         ],
         "properties": {
-          "fontsize": "{18}",
+          "fontsize": 18,
           "fontweight": "bold",
           "color": "#ff66ff"
         },
@@ -27,7 +27,7 @@
               "[ ] ---"
             ],
             "properties": {
-              "fontsize": "{8}",
+              "fontsize": 8,
               "color": "#aaaaaa",
               "name": "ach0"
             },
@@ -40,7 +40,7 @@
               "[ ] ---"
             ],
             "properties": {
-              "fontsize": "{8}",
+              "fontsize": 8,
               "color": "#aaaaaa",
               "name": "ach1"
             },
@@ -53,7 +53,7 @@
               "[ ] ---"
             ],
             "properties": {
-              "fontsize": "{8}",
+              "fontsize": 8,
               "color": "#aaaaaa",
               "name": "ach2"
             },
@@ -66,7 +66,7 @@
               "[ ] ---"
             ],
             "properties": {
-              "fontsize": "{8}",
+              "fontsize": 8,
               "color": "#aaaaaa",
               "name": "ach3"
             },
@@ -79,7 +79,7 @@
               "[ ] ---"
             ],
             "properties": {
-              "fontsize": "{8}",
+              "fontsize": 8,
               "color": "#aaaaaa",
               "name": "ach4"
             },
@@ -92,7 +92,7 @@
               "[ ] ---"
             ],
             "properties": {
-              "fontsize": "{8}",
+              "fontsize": 8,
               "color": "#aaaaaa",
               "name": "ach5"
             },
@@ -105,7 +105,7 @@
               "[ ] ---"
             ],
             "properties": {
-              "fontsize": "{8}",
+              "fontsize": 8,
               "color": "#aaaaaa",
               "name": "ach6"
             },
@@ -118,7 +118,7 @@
               "[ ] ---"
             ],
             "properties": {
-              "fontsize": "{8}",
+              "fontsize": 8,
               "color": "#aaaaaa",
               "name": "ach7"
             },
@@ -131,7 +131,7 @@
               "[ ] ---"
             ],
             "properties": {
-              "fontsize": "{8}",
+              "fontsize": 8,
               "color": "#aaaaaa",
               "name": "ach8"
             },
@@ -144,7 +144,7 @@
               "[ ] ---"
             ],
             "properties": {
-              "fontsize": "{8}",
+              "fontsize": 8,
               "color": "#aaaaaa",
               "name": "ach9"
             },
@@ -157,7 +157,7 @@
               "[ ] ---"
             ],
             "properties": {
-              "fontsize": "{8}",
+              "fontsize": 8,
               "color": "#aaaaaa",
               "name": "ach10"
             },
@@ -170,7 +170,7 @@
               "[ ] ---"
             ],
             "properties": {
-              "fontsize": "{8}",
+              "fontsize": 8,
               "color": "#aaaaaa",
               "name": "ach11"
             },
@@ -183,7 +183,7 @@
               "[ ] ---"
             ],
             "properties": {
-              "fontsize": "{8}",
+              "fontsize": 8,
               "color": "#aaaaaa",
               "name": "ach12"
             },
@@ -196,7 +196,7 @@
               "[ ] ---"
             ],
             "properties": {
-              "fontsize": "{8}",
+              "fontsize": 8,
               "color": "#aaaaaa",
               "name": "ach13"
             },
@@ -209,7 +209,7 @@
               "[ ] ---"
             ],
             "properties": {
-              "fontsize": "{8}",
+              "fontsize": 8,
               "color": "#aaaaaa",
               "name": "ach14"
             },
@@ -218,8 +218,8 @@
         ],
         "properties": {
           "flexdirection": "column",
-          "gap": "{2}",
-          "margintop": "{4}"
+          "gap": "2",
+          "margintop": "4"
         },
         "dataUid": "uid-3"
       },
@@ -234,12 +234,12 @@
               "< PREV"
             ],
             "properties": {
-              "fontsize": "{9}",
+              "fontsize": 9,
               "color": "#666666",
               "name": "btn-prev",
               "cursor": "pointer",
-              "padding": "{3}",
-              "borderradius": "{4}",
+              "padding": "3",
+              "borderradius": "4",
               "backgroundcolor": "#1a1a1a",
               "textalign": "center"
             },
@@ -252,7 +252,7 @@
               "1/1"
             ],
             "properties": {
-              "fontsize": "{9}",
+              "fontsize": 9,
               "color": "#888888",
               "name": "page-label"
             },
@@ -265,12 +265,12 @@
               "NEXT >"
             ],
             "properties": {
-              "fontsize": "{9}",
+              "fontsize": 9,
               "color": "#666666",
               "name": "btn-next-page",
               "cursor": "pointer",
-              "padding": "{3}",
-              "borderradius": "{4}",
+              "padding": "3",
+              "borderradius": "4",
               "backgroundcolor": "#1a1a1a",
               "textalign": "center"
             },
@@ -279,8 +279,8 @@
         ],
         "properties": {
           "flexdirection": "row",
-          "gap": "{8}",
-          "margintop": "{4}"
+          "gap": "8",
+          "margintop": "4"
         },
         "dataUid": "uid-19"
       },
@@ -291,15 +291,15 @@
           "BACK"
         ],
         "properties": {
-          "fontsize": "{10}",
+          "fontsize": 10,
           "color": "#666666",
           "name": "btn-back",
           "cursor": "pointer",
-          "padding": "{4}",
-          "borderradius": "{4}",
+          "padding": "4",
+          "borderradius": "4",
           "backgroundcolor": "#1a1a1a",
           "textalign": "center",
-          "margintop": "{3}"
+          "margintop": "3"
         },
         "dataUid": "uid-23"
       }
@@ -307,8 +307,8 @@
     "properties": {
       "flexdirection": "column",
       "alignitems": "center",
-      "gap": "{3}",
-      "padding": "{12}"
+      "gap": "3",
+      "padding": "12"
     },
     "dataUid": "uid-1"
   },

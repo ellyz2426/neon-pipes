@@ -1,15 +1,15 @@
-<container flexDirection="column" alignItems="center" gap={8} padding={12}>
+<container flexDirection="column" alignItems="center" gap="8" padding="12">
   <text fontSize={22} fontWeight="bold" color="#00ffff">CAMPAIGN</text>
   <text fontSize={10} color="#00aacc" name="zone-name">Zone 1: Tutorial Basin</text>
   <text fontSize={9} color="#888888" name="zone-desc">Learn the basics of pipe flow</text>
   <text fontSize={10} color="#ffcc00" name="zone-progress">Level 1 / 6</text>
-  <container flexDirection="column" gap={6} marginTop={6}>
-    <text fontSize={11} color="#00ffcc" name="btn-zone1" cursor="pointer" padding={6} borderRadius={3} backgroundColor="#002222" textAlign="center">Zone 1: Tutorial Basin</text>
-    <text fontSize={11} color="#44ff44" name="btn-zone2" cursor="pointer" padding={6} borderRadius={3} backgroundColor="#002200" textAlign="center">Zone 2: Flow Junction</text>
-    <text fontSize={11} color="#ffcc00" name="btn-zone3" cursor="pointer" padding={6} borderRadius={3} backgroundColor="#222200" textAlign="center">Zone 3: Pressure Works</text>
-    <text fontSize={11} color="#ff8844" name="btn-zone4" cursor="pointer" padding={6} borderRadius={3} backgroundColor="#221100" textAlign="center">Zone 4: Neon Labyrinth</text>
-    <text fontSize={11} color="#ff44ff" name="btn-zone5" cursor="pointer" padding={6} borderRadius={3} backgroundColor="#220022" textAlign="center">Zone 5: Flux Core</text>
-    <text fontSize={11} color="#ff4444" name="btn-zone6" cursor="pointer" padding={6} borderRadius={3} backgroundColor="#220000" textAlign="center">Zone 6: Quantum Grid</text>
+  <container flexDirection="column" gap="6" marginTop="6">
+    <text fontSize={11} color="#00ffcc" name="btn-zone1" cursor="pointer" padding="6" borderRadius="3" backgroundColor="#002222" textAlign="center">Zone 1: Tutorial Basin</text>
+    <text fontSize={11} color="#44ff44" name="btn-zone2" cursor="pointer" padding="6" borderRadius="3" backgroundColor="#002200" textAlign="center">Zone 2: Flow Junction</text>
+    <text fontSize={11} color="#ffcc00" name="btn-zone3" cursor="pointer" padding="6" borderRadius="3" backgroundColor="#222200" textAlign="center">Zone 3: Pressure Works</text>
+    <text fontSize={11} color="#ff8844" name="btn-zone4" cursor="pointer" padding="6" borderRadius="3" backgroundColor="#221100" textAlign="center">Zone 4: Neon Labyrinth</text>
+    <text fontSize={11} color="#ff44ff" name="btn-zone5" cursor="pointer" padding="6" borderRadius="3" backgroundColor="#220022" textAlign="center">Zone 5: Flux Core</text>
+    <text fontSize={11} color="#ff4444" name="btn-zone6" cursor="pointer" padding="6" borderRadius="3" backgroundColor="#220000" textAlign="center">Zone 6: Quantum Grid</text>
   </container>
-  <text fontSize={12} color="#aaaaaa" name="btn-back" cursor="pointer" padding={6} borderRadius={3} backgroundColor="#1a1a1a" textAlign="center" marginTop={6}>BACK</text>
+  <text fontSize={12} color="#aaaaaa" name="btn-back" cursor="pointer" padding="6" borderRadius="3" backgroundColor="#1a1a1a" textAlign="center" marginTop="6">BACK</text>
 </container>

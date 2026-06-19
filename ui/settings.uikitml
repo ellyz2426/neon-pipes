@@ -1,30 +1,35 @@
-<container flexDirection="column" alignItems="center" gap={4} padding={14}>
+<container flexDirection="column" alignItems="center" gap="4" padding="14">
   <text fontSize={18} fontWeight="bold" color="#aaaaaa">SETTINGS</text>
-  <container flexDirection="column" gap={4} marginTop={6}>
-    <container flexDirection="row" gap={4} alignItems="center">
+  <container flexDirection="column" gap="4" marginTop="6">
+    <container flexDirection="row" gap="4" alignItems="center">
       <text fontSize={10} color="#aaaaaa">Master:</text>
-      <text fontSize={10} color="#666666" name="btn-master-down" cursor="pointer" padding={3} backgroundColor="#1a1a1a" borderRadius={2}>-</text>
+      <text fontSize={10} color="#666666" name="btn-master-down" cursor="pointer" padding="3" backgroundColor="#1a1a1a" borderRadius="2">-</text>
       <text fontSize={10} color="#00ffcc" name="master-vol">100</text>
-      <text fontSize={10} color="#666666" name="btn-master-up" cursor="pointer" padding={3} backgroundColor="#1a1a1a" borderRadius={2}>+</text>
+      <text fontSize={10} color="#666666" name="btn-master-up" cursor="pointer" padding="3" backgroundColor="#1a1a1a" borderRadius="2">+</text>
     </container>
-    <container flexDirection="row" gap={4} alignItems="center">
+    <container flexDirection="row" gap="4" alignItems="center">
       <text fontSize={10} color="#aaaaaa">SFX:</text>
-      <text fontSize={10} color="#666666" name="btn-sfx-down" cursor="pointer" padding={3} backgroundColor="#1a1a1a" borderRadius={2}>-</text>
+      <text fontSize={10} color="#666666" name="btn-sfx-down" cursor="pointer" padding="3" backgroundColor="#1a1a1a" borderRadius="2">-</text>
       <text fontSize={10} color="#00ffcc" name="sfx-vol">100</text>
-      <text fontSize={10} color="#666666" name="btn-sfx-up" cursor="pointer" padding={3} backgroundColor="#1a1a1a" borderRadius={2}>+</text>
+      <text fontSize={10} color="#666666" name="btn-sfx-up" cursor="pointer" padding="3" backgroundColor="#1a1a1a" borderRadius="2">+</text>
     </container>
-    <container flexDirection="row" gap={4} alignItems="center">
+    <container flexDirection="row" gap="4" alignItems="center">
       <text fontSize={10} color="#aaaaaa">Music:</text>
-      <text fontSize={10} color="#666666" name="btn-music-down" cursor="pointer" padding={3} backgroundColor="#1a1a1a" borderRadius={2}>-</text>
+      <text fontSize={10} color="#666666" name="btn-music-down" cursor="pointer" padding="3" backgroundColor="#1a1a1a" borderRadius="2">-</text>
       <text fontSize={10} color="#00ffcc" name="music-vol">100</text>
-      <text fontSize={10} color="#666666" name="btn-music-up" cursor="pointer" padding={3} backgroundColor="#1a1a1a" borderRadius={2}>+</text>
+      <text fontSize={10} color="#666666" name="btn-music-up" cursor="pointer" padding="3" backgroundColor="#1a1a1a" borderRadius="2">+</text>
     </container>
-    <container flexDirection="row" gap={4} alignItems="center" marginTop={4}>
+    <container flexDirection="row" gap="4" alignItems="center" marginTop="4">
       <text fontSize={10} color="#aaaaaa">Theme:</text>
-      <text fontSize={10} color="#666666" name="btn-theme-prev" cursor="pointer" padding={3} backgroundColor="#1a1a1a" borderRadius={2}>&lt;</text>
+      <text fontSize={10} color="#666666" name="btn-theme-prev" cursor="pointer" padding="3" backgroundColor="#1a1a1a" borderRadius="2">&lt;</text>
       <text fontSize={10} color="#00ffcc" name="theme-name">Neon Holodeck</text>
-      <text fontSize={10} color="#666666" name="btn-theme-next" cursor="pointer" padding={3} backgroundColor="#1a1a1a" borderRadius={2}>&gt;</text>
+      <text fontSize={10} color="#666666" name="btn-theme-next" cursor="pointer" padding="3" backgroundColor="#1a1a1a" borderRadius="2">&gt;</text>
+    </container>
+    <container flexDirection="row" gap="4" alignItems="center" marginTop="4">
+      <text fontSize={10} color="#aaaaaa">Auto-Lock:</text>
+      <text fontSize={11} color="#44ff88" name="btn-autolock" cursor="pointer" padding="3" backgroundColor="#002211" borderRadius="2">TOGGLE</text>
+      <text fontSize={10} color="#00ffcc" name="autolock-label">Auto-Lock: OFF</text>
     </container>
   </container>
-  <text fontSize={11} color="#666666" name="btn-back" cursor="pointer" padding={6} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center" marginTop={6}>BACK</text>
+  <text fontSize={11} color="#666666" name="btn-back" cursor="pointer" padding="6" borderRadius="4" backgroundColor="#1a1a1a" textAlign="center" marginTop="6">BACK</text>
 </container>

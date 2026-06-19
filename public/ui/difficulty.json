@@ -10,7 +10,7 @@
           "DIFFICULTY"
         ],
         "properties": {
-          "fontsize": "{22}",
+          "fontsize": 22,
           "fontweight": "bold",
           "color": "#00ffff"
         },
@@ -27,12 +27,12 @@
               "EASY (5x5)"
             ],
             "properties": {
-              "fontsize": "{14}",
+              "fontsize": 14,
               "color": "#66ff66",
               "name": "btn-easy",
               "cursor": "pointer",
-              "padding": "{6}",
-              "borderradius": "{4}",
+              "padding": "6",
+              "borderradius": "4",
               "backgroundcolor": "#002200",
               "textalign": "center"
             },
@@ -45,12 +45,12 @@
               "MEDIUM (7x7)"
             ],
             "properties": {
-              "fontsize": "{14}",
+              "fontsize": 14,
               "color": "#ffcc00",
               "name": "btn-medium",
               "cursor": "pointer",
-              "padding": "{6}",
-              "borderradius": "{4}",
+              "padding": "6",
+              "borderradius": "4",
               "backgroundcolor": "#222200",
               "textalign": "center"
             },
@@ -63,12 +63,12 @@
               "HARD (9x9)"
             ],
             "properties": {
-              "fontsize": "{14}",
+              "fontsize": 14,
               "color": "#ff6666",
               "name": "btn-hard",
               "cursor": "pointer",
-              "padding": "{6}",
-              "borderradius": "{4}",
+              "padding": "6",
+              "borderradius": "4",
               "backgroundcolor": "#220000",
               "textalign": "center"
             },
@@ -77,8 +77,8 @@
         ],
         "properties": {
           "flexdirection": "column",
-          "gap": "{6}",
-          "margintop": "{8}"
+          "gap": "6",
+          "margintop": "8"
         },
         "dataUid": "uid-3"
       },
@@ -89,15 +89,15 @@
           "BACK"
         ],
         "properties": {
-          "fontsize": "{11}",
+          "fontsize": 11,
           "color": "#666666",
           "name": "btn-back",
           "cursor": "pointer",
-          "padding": "{4}",
-          "borderradius": "{4}",
+          "padding": "4",
+          "borderradius": "4",
           "backgroundcolor": "#1a1a1a",
           "textalign": "center",
-          "margintop": "{8}"
+          "margintop": "8"
         },
         "dataUid": "uid-7"
       }
@@ -105,8 +105,8 @@
     "properties": {
       "flexdirection": "column",
       "alignitems": "center",
-      "gap": "{8}",
-      "padding": "{16}"
+      "gap": "8",
+      "padding": "16"
     },
     "dataUid": "uid-1"
   },

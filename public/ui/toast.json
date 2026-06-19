@@ -10,7 +10,7 @@
           "Achievement Unlocked!"
         ],
         "properties": {
-          "fontsize": "{11}",
+          "fontsize": 11,
           "color": "#00ffcc",
           "name": "toast-text"
         },
@@ -18,7 +18,7 @@
       }
     ],
     "properties": {
-      "padding": "{8}"
+      "padding": "8"
     },
     "dataUid": "uid-1"
   },

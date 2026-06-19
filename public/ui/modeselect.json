@@ -10,7 +10,7 @@
           "SELECT MODE"
         ],
         "properties": {
-          "fontsize": "{22}",
+          "fontsize": 22,
           "fontweight": "bold",
           "color": "#00ffff"
         },
@@ -27,12 +27,12 @@
               "CAMPAIGN"
             ],
             "properties": {
-              "fontsize": "{12}",
+              "fontsize": 12,
               "color": "#00ffcc",
               "name": "btn-campaign",
               "cursor": "pointer",
-              "padding": "{5}",
-              "borderradius": "{4}",
+              "padding": "5",
+              "borderradius": "4",
               "backgroundcolor": "#002222",
               "textalign": "center"
             },
@@ -45,12 +45,12 @@
               "TIME ATTACK"
             ],
             "properties": {
-              "fontsize": "{12}",
+              "fontsize": 12,
               "color": "#ffcc00",
               "name": "btn-timed",
               "cursor": "pointer",
-              "padding": "{5}",
-              "borderradius": "{4}",
+              "padding": "5",
+              "borderradius": "4",
               "backgroundcolor": "#222200",
               "textalign": "center"
             },
@@ -63,12 +63,12 @@
               "ENDLESS"
             ],
             "properties": {
-              "fontsize": "{12}",
+              "fontsize": 12,
               "color": "#ff66ff",
               "name": "btn-endless",
               "cursor": "pointer",
-              "padding": "{5}",
-              "borderradius": "{4}",
+              "padding": "5",
+              "borderradius": "4",
               "backgroundcolor": "#220022",
               "textalign": "center"
             },
@@ -81,12 +81,12 @@
               "ZEN"
             ],
             "properties": {
-              "fontsize": "{12}",
+              "fontsize": 12,
               "color": "#66ff66",
               "name": "btn-zen",
               "cursor": "pointer",
-              "padding": "{5}",
-              "borderradius": "{4}",
+              "padding": "5",
+              "borderradius": "4",
               "backgroundcolor": "#002200",
               "textalign": "center"
             },
@@ -99,12 +99,12 @@
               "DAILY CHALLENGE"
             ],
             "properties": {
-              "fontsize": "{12}",
+              "fontsize": 12,
               "color": "#ff8844",
               "name": "btn-daily",
               "cursor": "pointer",
-              "padding": "{5}",
-              "borderradius": "{4}",
+              "padding": "5",
+              "borderradius": "4",
               "backgroundcolor": "#221100",
               "textalign": "center"
             },
@@ -117,12 +117,12 @@
               "SPEED FLOW"
             ],
             "properties": {
-              "fontsize": "{12}",
+              "fontsize": 12,
               "color": "#88ccff",
               "name": "btn-speed",
               "cursor": "pointer",
-              "padding": "{5}",
-              "borderradius": "{4}",
+              "padding": "5",
+              "borderradius": "4",
               "backgroundcolor": "#112233",
               "textalign": "center"
             },
@@ -135,12 +135,12 @@
               "PUZZLE PACK"
             ],
             "properties": {
-              "fontsize": "{12}",
+              "fontsize": 12,
               "color": "#ff6666",
               "name": "btn-puzzle",
               "cursor": "pointer",
-              "padding": "{5}",
-              "borderradius": "{4}",
+              "padding": "5",
+              "borderradius": "4",
               "backgroundcolor": "#221111",
               "textalign": "center"
             },
@@ -153,12 +153,12 @@
               "PRACTICE"
             ],
             "properties": {
-              "fontsize": "{12}",
+              "fontsize": 12,
               "color": "#aaaaaa",
               "name": "btn-practice",
               "cursor": "pointer",
-              "padding": "{5}",
-              "borderradius": "{4}",
+              "padding": "5",
+              "borderradius": "4",
               "backgroundcolor": "#1a1a1a",
               "textalign": "center"
             },
@@ -167,8 +167,8 @@
         ],
         "properties": {
           "flexdirection": "column",
-          "gap": "{5}",
-          "margintop": "{6}"
+          "gap": "5",
+          "margintop": "6"
         },
         "dataUid": "uid-3"
       },
@@ -179,15 +179,15 @@
           "BACK"
         ],
         "properties": {
-          "fontsize": "{11}",
+          "fontsize": 11,
           "color": "#666666",
           "name": "btn-back",
           "cursor": "pointer",
-          "padding": "{4}",
-          "borderradius": "{4}",
+          "padding": "4",
+          "borderradius": "4",
           "backgroundcolor": "#1a1a1a",
           "textalign": "center",
-          "margintop": "{4}"
+          "margintop": "4"
         },
         "dataUid": "uid-12"
       }
@@ -195,8 +195,8 @@
     "properties": {
       "flexdirection": "column",
       "alignitems": "center",
-      "gap": "{8}",
-      "padding": "{16}"
+      "gap": "8",
+      "padding": "16"
     },
     "dataUid": "uid-1"
   },

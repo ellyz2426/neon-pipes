@@ -1,29 +1,29 @@
-<container flexDirection="column" alignItems="center" gap={4} padding={12}>
+<container flexDirection="column" alignItems="center" gap="4" padding="12">
   <text fontSize={18} fontWeight="bold" color="#8888ff">HOW TO PLAY</text>
-  <container flexDirection="column" gap={3} marginTop={4}>
+  <container flexDirection="column" gap="3" marginTop="4">
     <text fontSize={9} color="#00ffcc">-- GOAL --</text>
     <text fontSize={8} color="#aaaaaa">Rotate pipe segments to create</text>
     <text fontSize={8} color="#aaaaaa">a continuous path from SOURCE</text>
     <text fontSize={8} color="#aaaaaa">(green) to DRAIN (red).</text>
-    <text fontSize={9} color="#00ffcc" marginTop={3}>-- BROWSER CONTROLS --</text>
+    <text fontSize={9} color="#00ffcc" marginTop="3">-- BROWSER CONTROLS --</text>
     <text fontSize={8} color="#aaaaaa">Click: Rotate pipe clockwise</text>
     <text fontSize={8} color="#aaaaaa">Right-click: Counter-clockwise</text>
     <text fontSize={8} color="#aaaaaa">ESC/P: Pause</text>
     <text fontSize={8} color="#aaaaaa">R: Restart level</text>
-    <text fontSize={9} color="#00ffcc" marginTop={3}>-- VR CONTROLS --</text>
+    <text fontSize={9} color="#00ffcc" marginTop="3">-- VR CONTROLS --</text>
     <text fontSize={8} color="#aaaaaa">Trigger: Rotate pipe</text>
     <text fontSize={8} color="#aaaaaa">Grip: Counter-clockwise</text>
     <text fontSize={8} color="#aaaaaa">B: Pause</text>
-    <text fontSize={9} color="#00ffcc" marginTop={3}>-- PIPE TYPES --</text>
+    <text fontSize={9} color="#00ffcc" marginTop="3">-- PIPE TYPES --</text>
     <text fontSize={8} color="#aaaaaa">Straight: connects 2 opposite</text>
     <text fontSize={8} color="#aaaaaa">Elbow: connects 2 adjacent</text>
     <text fontSize={8} color="#aaaaaa">T-Pipe: connects 3 sides</text>
     <text fontSize={8} color="#aaaaaa">Cross: connects all 4 sides</text>
-    <text fontSize={9} color="#00ffcc" marginTop={3}>-- SCORING --</text>
+    <text fontSize={9} color="#00ffcc" marginTop="3">-- SCORING --</text>
     <text fontSize={8} color="#aaaaaa">Connected pipe: 100 pts</text>
     <text fontSize={8} color="#aaaaaa">Speed bonus: +time remaining</text>
     <text fontSize={8} color="#aaaaaa">Combo: consecutive correct</text>
-    <text fontSize={9} color="#00ffcc" marginTop={3}>-- MODES --</text>
+    <text fontSize={9} color="#00ffcc" marginTop="3">-- MODES --</text>
     <text fontSize={8} color="#aaaaaa">Campaign: 36 levels, 6 zones</text>
     <text fontSize={8} color="#aaaaaa">Time Attack: beat the clock</text>
     <text fontSize={8} color="#aaaaaa">Endless: infinite puzzles</text>
@@ -33,5 +33,5 @@
     <text fontSize={8} color="#aaaaaa">Puzzle Pack: hand-crafted</text>
     <text fontSize={8} color="#aaaaaa">Practice: free play</text>
   </container>
-  <text fontSize={10} color="#666666" name="btn-back" cursor="pointer" padding={4} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center" marginTop={4}>BACK</text>
+  <text fontSize={10} color="#666666" name="btn-back" cursor="pointer" padding="4" borderRadius="4" backgroundColor="#1a1a1a" textAlign="center" marginTop="4">BACK</text>
 </container>

@@ -1,6 +1,6 @@
-<container flexDirection="column" alignItems="center" gap={4} padding={14}>
+<container flexDirection="column" alignItems="center" gap="4" padding="14">
   <text fontSize={18} fontWeight="bold" color="#66ff66">STATISTICS</text>
-  <container flexDirection="column" gap={3} marginTop={6}>
+  <container flexDirection="column" gap="3" marginTop="6">
     <text fontSize={9} color="#00ffcc" name="stat0">Games Played: 0</text>
     <text fontSize={9} color="#00ffcc" name="stat1">Levels Cleared: 0</text>
     <text fontSize={9} color="#00ffcc" name="stat2">Total Score: 0</text>
@@ -11,6 +11,8 @@
     <text fontSize={9} color="#00ffcc" name="stat7">Play Time: 0:00</text>
     <text fontSize={9} color="#00ffcc" name="stat8">Perfect Levels: 0</text>
     <text fontSize={9} color="#00ffcc" name="stat9">Level: 1 (Novice)</text>
+    <text fontSize={9} color="#00ffcc" name="stat10">Endless Best: Lvl 0</text>
+    <text fontSize={9} color="#ffcc00" name="stat11">Achievements: 0/60</text>
   </container>
-  <text fontSize={11} color="#666666" name="btn-back" cursor="pointer" padding={4} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center" marginTop={6}>BACK</text>
+  <text fontSize={11} color="#666666" name="btn-back" cursor="pointer" padding="4" borderRadius="4" backgroundColor="#1a1a1a" textAlign="center" marginTop="6">BACK</text>
 </container>

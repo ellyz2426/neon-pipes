@@ -10,7 +10,7 @@
           "STATISTICS"
         ],
         "properties": {
-          "fontsize": "{18}",
+          "fontsize": 18,
           "fontweight": "bold",
           "color": "#66ff66"
         },
@@ -27,7 +27,7 @@
               "Games Played: 0"
             ],
             "properties": {
-              "fontsize": "{9}",
+              "fontsize": 9,
               "color": "#00ffcc",
               "name": "stat0"
             },
@@ -40,7 +40,7 @@
               "Levels Cleared: 0"
             ],
             "properties": {
-              "fontsize": "{9}",
+              "fontsize": 9,
               "color": "#00ffcc",
               "name": "stat1"
             },
@@ -53,7 +53,7 @@
               "Total Score: 0"
             ],
             "properties": {
-              "fontsize": "{9}",
+              "fontsize": 9,
               "color": "#00ffcc",
               "name": "stat2"
             },
@@ -66,7 +66,7 @@
               "Best Score: 0"
             ],
             "properties": {
-              "fontsize": "{9}",
+              "fontsize": 9,
               "color": "#00ffcc",
               "name": "stat3"
             },
@@ -79,7 +79,7 @@
               "Total Moves: 0"
             ],
             "properties": {
-              "fontsize": "{9}",
+              "fontsize": 9,
               "color": "#00ffcc",
               "name": "stat4"
             },
@@ -92,7 +92,7 @@
               "Total Pipes: 0"
             ],
             "properties": {
-              "fontsize": "{9}",
+              "fontsize": 9,
               "color": "#00ffcc",
               "name": "stat5"
             },
@@ -105,7 +105,7 @@
               "Best Combo: x1"
             ],
             "properties": {
-              "fontsize": "{9}",
+              "fontsize": 9,
               "color": "#00ffcc",
               "name": "stat6"
             },
@@ -118,7 +118,7 @@
               "Play Time: 0:00"
             ],
             "properties": {
-              "fontsize": "{9}",
+              "fontsize": 9,
               "color": "#00ffcc",
               "name": "stat7"
             },
@@ -131,7 +131,7 @@
               "Perfect Levels: 0"
             ],
             "properties": {
-              "fontsize": "{9}",
+              "fontsize": 9,
               "color": "#00ffcc",
               "name": "stat8"
             },
@@ -144,17 +144,43 @@
               "Level: 1 (Novice)"
             ],
             "properties": {
-              "fontsize": "{9}",
+              "fontsize": 9,
               "color": "#00ffcc",
               "name": "stat9"
             },
             "dataUid": "uid-13"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "Endless Best: Lvl 0"
+            ],
+            "properties": {
+              "fontsize": 9,
+              "color": "#00ffcc",
+              "name": "stat10"
+            },
+            "dataUid": "uid-14"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "Achievements: 0/60"
+            ],
+            "properties": {
+              "fontsize": 9,
+              "color": "#ffcc00",
+              "name": "stat11"
+            },
+            "dataUid": "uid-15"
           }
         ],
         "properties": {
           "flexdirection": "column",
-          "gap": "{3}",
-          "margintop": "{6}"
+          "gap": "3",
+          "margintop": "6"
         },
         "dataUid": "uid-3"
       },
@@ -165,24 +191,24 @@
           "BACK"
         ],
         "properties": {
-          "fontsize": "{11}",
+          "fontsize": 11,
           "color": "#666666",
           "name": "btn-back",
           "cursor": "pointer",
-          "padding": "{4}",
-          "borderradius": "{4}",
+          "padding": "4",
+          "borderradius": "4",
           "backgroundcolor": "#1a1a1a",
           "textalign": "center",
-          "margintop": "{6}"
+          "margintop": "6"
         },
-        "dataUid": "uid-14"
+        "dataUid": "uid-16"
       }
     ],
     "properties": {
       "flexdirection": "column",
       "alignitems": "center",
-      "gap": "{4}",
-      "padding": "{14}"
+      "gap": "4",
+      "padding": "14"
     },
     "dataUid": "uid-1"
   },
@@ -194,7 +220,7 @@
         "column": 0
       },
       "end": {
-        "line": 15,
+        "line": 17,
         "column": 12
       }
     },
@@ -214,7 +240,7 @@
         "column": 2
       },
       "end": {
-        "line": 13,
+        "line": 15,
         "column": 14
       }
     },
@@ -320,11 +346,31 @@
     },
     "uid-14": {
       "start": {
+        "line": 13,
+        "column": 4
+      },
+      "end": {
+        "line": 13,
+        "column": 79
+      }
+    },
+    "uid-15": {
+      "start": {
         "line": 14,
-        "column": 2
+        "column": 4
       },
       "end": {
         "line": 14,
+        "column": 78
+      }
+    },
+    "uid-16": {
+      "start": {
+        "line": 16,
+        "column": 2
+      },
+      "end": {
+        "line": 16,
         "column": 170
       }
     }
