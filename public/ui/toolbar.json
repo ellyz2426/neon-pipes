@@ -10,7 +10,7 @@
           "UNDO"
         ],
         "properties": {
-          "fontsize": 10,
+          "fontsize": "{10}",
           "color": "#ffcc00",
           "name": "btn-undo",
           "cursor": "pointer",
@@ -28,7 +28,7 @@
           "HINT"
         ],
         "properties": {
-          "fontsize": 10,
+          "fontsize": "{10}",
           "color": "#00ffcc",
           "name": "btn-hint",
           "cursor": "pointer",
@@ -46,7 +46,7 @@
           "FREEZE"
         ],
         "properties": {
-          "fontsize": 10,
+          "fontsize": "{10}",
           "color": "#ff66ff",
           "name": "btn-freeze",
           "cursor": "pointer",
@@ -64,7 +64,7 @@
           "LOCK"
         ],
         "properties": {
-          "fontsize": 10,
+          "fontsize": "{10}",
           "color": "#4488ff",
           "name": "btn-lock",
           "cursor": "pointer",
@@ -82,7 +82,7 @@
           "REVEAL"
         ],
         "properties": {
-          "fontsize": 10,
+          "fontsize": "{10}",
           "color": "#44ff88",
           "name": "btn-reveal",
           "cursor": "pointer",
@@ -100,7 +100,7 @@
           "RESTART"
         ],
         "properties": {
-          "fontsize": 10,
+          "fontsize": "{10}",
           "color": "#ff4444",
           "name": "btn-restart",
           "cursor": "pointer",

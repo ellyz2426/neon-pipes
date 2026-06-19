@@ -30,6 +30,11 @@
       <text fontSize={11} color="#44ff88" name="btn-autolock" cursor="pointer" padding="3" backgroundColor="#002211" borderRadius="2">TOGGLE</text>
       <text fontSize={10} color="#00ffcc" name="autolock-label">Auto-Lock: OFF</text>
     </container>
+    <container flexDirection="row" gap="4" alignItems="center" marginTop="2">
+      <text fontSize={10} color="#aaaaaa">Colorblind:</text>
+      <text fontSize={11} color="#44aaff" name="btn-colorblind" cursor="pointer" padding="3" backgroundColor="#001122" borderRadius="2">TOGGLE</text>
+      <text fontSize={10} color="#00ffcc" name="colorblind-label">Colorblind: OFF</text>
+    </container>
   </container>
   <text fontSize={11} color="#666666" name="btn-back" cursor="pointer" padding="6" borderRadius="4" backgroundColor="#1a1a1a" textAlign="center" marginTop="6">BACK</text>
 </container>

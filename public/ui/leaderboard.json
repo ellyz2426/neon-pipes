@@ -10,7 +10,7 @@
           "LEADERBOARD"
         ],
         "properties": {
-          "fontsize": 18,
+          "fontsize": "{18}",
           "fontweight": "bold",
           "color": "#ffcc00"
         },
@@ -27,7 +27,7 @@
               "1. ---"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#00ffcc",
               "name": "row0"
             },
@@ -40,7 +40,7 @@
               "2. ---"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#00ccaa",
               "name": "row1"
             },
@@ -53,7 +53,7 @@
               "3. ---"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#00aa88",
               "name": "row2"
             },
@@ -66,7 +66,7 @@
               "4. ---"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#009977",
               "name": "row3"
             },
@@ -79,7 +79,7 @@
               "5. ---"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#008866",
               "name": "row4"
             },
@@ -92,7 +92,7 @@
               "6. ---"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#007755",
               "name": "row5"
             },
@@ -105,7 +105,7 @@
               "7. ---"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#006644",
               "name": "row6"
             },
@@ -118,7 +118,7 @@
               "8. ---"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#005533",
               "name": "row7"
             },
@@ -131,7 +131,7 @@
               "9. ---"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#004422",
               "name": "row8"
             },
@@ -144,7 +144,7 @@
               "10. ---"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#003311",
               "name": "row9"
             },
@@ -165,7 +165,7 @@
           "BACK"
         ],
         "properties": {
-          "fontsize": 11,
+          "fontsize": "{11}",
           "color": "#666666",
           "name": "btn-back",
           "cursor": "pointer",

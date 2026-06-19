@@ -10,7 +10,7 @@
           "HOW TO PLAY"
         ],
         "properties": {
-          "fontsize": 18,
+          "fontsize": "{18}",
           "fontweight": "bold",
           "color": "#8888ff"
         },
@@ -27,7 +27,7 @@
               "-- GOAL --"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#00ffcc"
             },
             "dataUid": "uid-4"
@@ -39,7 +39,7 @@
               "Rotate pipe segments to create"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-5"
@@ -51,7 +51,7 @@
               "a continuous path from SOURCE"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-6"
@@ -63,7 +63,7 @@
               "(green) to DRAIN (red)."
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-7"
@@ -75,7 +75,7 @@
               "-- BROWSER CONTROLS --"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#00ffcc",
               "margintop": "3"
             },
@@ -88,7 +88,7 @@
               "Click: Rotate pipe clockwise"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-9"
@@ -100,7 +100,7 @@
               "Right-click: Counter-clockwise"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-10"
@@ -112,7 +112,7 @@
               "ESC/P: Pause"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-11"
@@ -124,7 +124,7 @@
               "R: Restart level"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-12"
@@ -136,7 +136,7 @@
               "-- VR CONTROLS --"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#00ffcc",
               "margintop": "3"
             },
@@ -149,7 +149,7 @@
               "Trigger: Rotate pipe"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-14"
@@ -161,7 +161,7 @@
               "Grip: Counter-clockwise"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-15"
@@ -173,7 +173,7 @@
               "B: Pause"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-16"
@@ -185,7 +185,7 @@
               "-- PIPE TYPES --"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#00ffcc",
               "margintop": "3"
             },
@@ -198,7 +198,7 @@
               "Straight: connects 2 opposite"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-18"
@@ -210,7 +210,7 @@
               "Elbow: connects 2 adjacent"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-19"
@@ -222,7 +222,7 @@
               "T-Pipe: connects 3 sides"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-20"
@@ -234,7 +234,7 @@
               "Cross: connects all 4 sides"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-21"
@@ -246,7 +246,7 @@
               "-- SCORING --"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#00ffcc",
               "margintop": "3"
             },
@@ -259,7 +259,7 @@
               "Connected pipe: 100 pts"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-23"
@@ -271,7 +271,7 @@
               "Speed bonus: +time remaining"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-24"
@@ -283,7 +283,7 @@
               "Combo: consecutive correct"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-25"
@@ -295,7 +295,7 @@
               "-- MODES --"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#00ffcc",
               "margintop": "3"
             },
@@ -308,7 +308,7 @@
               "Campaign: 36 levels, 6 zones"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-27"
@@ -320,7 +320,7 @@
               "Time Attack: beat the clock"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-28"
@@ -332,7 +332,7 @@
               "Endless: infinite puzzles"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-29"
@@ -344,7 +344,7 @@
               "Zen: no timer, relax"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-30"
@@ -356,7 +356,7 @@
               "Daily: same puzzle for all"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-31"
@@ -368,7 +368,7 @@
               "Speed Flow: rapid small grids"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-32"
@@ -380,7 +380,7 @@
               "Puzzle Pack: hand-crafted"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-33"
@@ -392,7 +392,7 @@
               "Practice: free play"
             ],
             "properties": {
-              "fontsize": 8,
+              "fontsize": "{8}",
               "color": "#aaaaaa"
             },
             "dataUid": "uid-34"
@@ -412,7 +412,7 @@
           "BACK"
         ],
         "properties": {
-          "fontsize": 10,
+          "fontsize": "{10}",
           "color": "#666666",
           "name": "btn-back",
           "cursor": "pointer",

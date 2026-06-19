@@ -85,9 +85,14 @@ interface CellData {
   isDrain: boolean;
   isLocked: boolean;
   isConnected: boolean;
+  isBlocked: boolean; // Obstacle cell
   flowProgress: number;
   mesh: Group | null;
   highlightMesh: Mesh | null;
+  rotAnim: number; // Rotation animation progress (0 = idle, >0 = animating)
+  rotDir: number;  // 1 = CW, -1 = CCW
+  entranceDelay: number; // Staggered entrance animation
+  entranceProgress: number;
 }
 
 // Undo history entry
@@ -100,6 +105,16 @@ interface MoveEntry {
 
 // Power-up types
 type PowerUpType = 'hint' | 'undo' | 'freeze' | 'reveal' | 'lock';
+
+// Star rating from moves
+type StarRating = 0 | 1 | 2 | 3;
+
+function getStarRating(moves: number, minMoves: number): StarRating {
+  if (moves <= minMoves) return 3;
+  if (moves <= minMoves * 1.5) return 2;
+  if (moves <= minMoves * 2.5) return 1;
+  return 0;
+}
 
 interface PowerUp {
   type: PowerUpType;
@@ -234,6 +249,27 @@ const ACHIEVEMENTS: Achievement[] = [
   { id: 'level_40', name: 'Level 40', desc: 'Reach player level 40', check: s => s.level >= 40 },
   { id: 'two_hundred_flows', name: 'Flow Emperor', desc: 'Complete 200 levels', check: s => s.levelClears >= 200 },
   { id: 'five_hundred_flows', name: 'Flow Deity', desc: 'Complete 500 levels', check: s => s.levelClears >= 500 },
+  // Round 4 achievements
+  { id: 'star_collector_10', name: 'Star Collector', desc: 'Earn 10 total stars', check: s => s.totalStars >= 10 },
+  { id: 'star_collector_50', name: 'Star Hoarder', desc: 'Earn 50 total stars', check: s => s.totalStars >= 50 },
+  { id: 'star_collector_100', name: 'Star Emperor', desc: 'Earn 100 total stars', check: s => s.totalStars >= 100 },
+  { id: 'three_star_5', name: 'Triple Threat', desc: 'Get 3 stars on 5 levels', check: s => s.threeStarLevels >= 5 },
+  { id: 'three_star_20', name: 'Perfectionist', desc: 'Get 3 stars on 20 levels', check: s => s.threeStarLevels >= 20 },
+  { id: 'streak_5', name: 'Hot Streak', desc: 'Win 5 levels in a row', check: s => s.longestStreak >= 5 },
+  { id: 'streak_10', name: 'Unstoppable', desc: 'Win 10 levels in a row', check: s => s.longestStreak >= 10 },
+  { id: 'streak_25', name: 'Streak Legend', desc: 'Win 25 levels in a row', check: s => s.longestStreak >= 25 },
+  { id: 'puzzle_5', name: 'Puzzle Solver', desc: 'Clear 5 puzzle levels', check: s => s.puzzleClears >= 5 },
+  { id: 'puzzle_20', name: 'Puzzle Expert', desc: 'Clear 20 puzzle levels', check: s => s.puzzleClears >= 20 },
+  { id: 'practice_10', name: 'Dedicated Learner', desc: 'Clear 10 practice levels', check: s => s.practiceClears >= 10 },
+  { id: 'moves_5000', name: 'Pipe Wizard', desc: 'Make 5000 total moves', check: s => s.totalMoves >= 5000 },
+  { id: 'play_time_1h', name: 'Time Invested', desc: 'Play for 1 hour total', check: s => s.playTime >= 3600 },
+  { id: 'play_time_5h', name: 'Pipe Addict', desc: 'Play for 5 hours total', check: s => s.playTime >= 18000 },
+  { id: 'speed_chain_10', name: 'Speed Demon Chain', desc: '10 levels under 60s each', check: s => s.speedChain >= 10 },
+  { id: 'all_skins', name: 'Collector', desc: 'Unlock all 8 pipe skins', check: s => s.skinsUnlocked >= 8 },
+  { id: 'campaign_all', name: 'Campaign Legend', desc: 'Complete all campaign zones', check: s => s.campaignLevel >= 36 },
+  { id: 'daily_60', name: 'Daily Devotion', desc: 'Complete 60 daily challenges', check: s => s.dailyDone >= 60 },
+  { id: 'endless_100', name: 'Endless Legend', desc: 'Clear 100 endless levels', check: s => s.endlessClears >= 100 },
+  { id: 'pipes_10000', name: 'Pipe Universe', desc: 'Connect 10000 pipes', check: s => s.totalPipes >= 10000 },
 ];
 
 interface CareerStats {
@@ -248,6 +284,16 @@ interface CareerStats {
   locksUsed: number; revealsUsed: number; noPowerupWins: number;
   endlessHighScore: number; endlessBestLevel: number;
   autoLockEnabled: boolean;
+  // Round 4 additions
+  colorblindMode: boolean;
+  totalStars: number;
+  threeStarLevels: number;
+  puzzleClears: number;
+  practiceClears: number;
+  longestStreak: number; // consecutive wins
+  currentStreak: number;
+  bestModeTimes: Record<string, number>; // personal best time per mode
+  bestModeScores: Record<string, number>; // personal best score per mode
 }
 
 const LEVEL_TITLES = ['Novice', 'Apprentice', 'Journeyman', 'Plumber', 'Pipe Fitter', 'Flow Master',
@@ -510,6 +556,17 @@ class GameStateManager {
   // Hover tracking
   hoveredCell: [number, number] | null = null;
 
+  // Puzzle mode
+  moveLimit = 0; // 0 = unlimited
+
+  // Victory sequence
+  victoryPhase = 0; // 0 = not playing, 1+ = chain glow step
+  victoryTimer = 0;
+
+  // Entrance animation
+  entranceActive = false;
+  entranceTimer = 0;
+
   // Stats
   stats: CareerStats;
   unlockedAchievements = new Set<string>();
@@ -534,6 +591,16 @@ class GameStateManager {
       d.endlessHighScore = d.endlessHighScore || 0;
       d.endlessBestLevel = d.endlessBestLevel || 0;
       d.autoLockEnabled = d.autoLockEnabled || false;
+      // Round 4 compat
+      d.colorblindMode = d.colorblindMode || false;
+      d.totalStars = d.totalStars || 0;
+      d.threeStarLevels = d.threeStarLevels || 0;
+      d.puzzleClears = d.puzzleClears || 0;
+      d.practiceClears = d.practiceClears || 0;
+      d.longestStreak = d.longestStreak || 0;
+      d.currentStreak = d.currentStreak || 0;
+      d.bestModeTimes = d.bestModeTimes || {};
+      d.bestModeScores = d.bestModeScores || {};
       return d;
     }
     return {
@@ -547,6 +614,11 @@ class GameStateManager {
       locksUsed: 0, revealsUsed: 0, noPowerupWins: 0,
       endlessHighScore: 0, endlessBestLevel: 0,
       autoLockEnabled: false,
+      colorblindMode: false,
+      totalStars: 0, threeStarLevels: 0,
+      puzzleClears: 0, practiceClears: 0,
+      longestStreak: 0, currentStreak: 0,
+      bestModeTimes: {}, bestModeScores: {},
     };
   }
 
@@ -580,7 +652,8 @@ class GameStateManager {
         this.grid[y][x] = {
           pipeType: PipeType.STRAIGHT_H,
           isSource: false, isDrain: false, isLocked: false,
-          isConnected: false, flowProgress: 0, mesh: null, highlightMesh: null,
+          isConnected: false, isBlocked: false, flowProgress: 0, mesh: null, highlightMesh: null,
+          rotAnim: 0, rotDir: 0, entranceDelay: 0, entranceProgress: 0,
         };
         this.cellMeshes[y][x] = null;
         this.solvedGrid[y][x] = PipeType.STRAIGHT_H;
@@ -671,11 +744,17 @@ class GameStateManager {
       for (let x = 0; x < size; x++) {
         const cell = this.grid[y][x];
         if (cell.isSource || cell.isDrain) { cell.isLocked = true; continue; }
+        if (cell.isBlocked) continue;
         const rotations = Math.floor(rng() * 4);
         for (let r = 0; r < rotations; r++) {
           cell.pipeType = ROTATE_CW[cell.pipeType];
         }
         if (rotations > 0) this.minMoves++;
+        // Staggered entrance: delay based on distance from center
+        const cx = size / 2, cy = size / 2;
+        const dist = Math.sqrt((x - cx) ** 2 + (y - cy) ** 2);
+        cell.entranceDelay = dist * 0.06 + Math.random() * 0.05;
+        cell.entranceProgress = 0;
       }
     }
 
@@ -771,7 +850,7 @@ class GameStateManager {
 // PIPE MESH BUILDER
 // ============================================================
 
-function buildPipeMesh(pipeType: PipeType, skin: PipeSkin, theme: Theme, isSource: boolean, isDrain: boolean, isLocked = false): Group {
+function buildPipeMesh(pipeType: PipeType, skin: PipeSkin, theme: Theme, isSource: boolean, isDrain: boolean, isLocked = false, colorblind = false): Group {
   const g = new Group();
   const baseColor = isSource ? theme.source : isDrain ? theme.drain : isLocked ? 0x4488ff : skin.color;
   const emissiveColor = isSource ? 0x005522 : isDrain ? 0x550000 : isLocked ? 0x002244 : skin.emissive;
@@ -833,6 +912,39 @@ function buildPipeMesh(pipeType: PipeType, skin: PipeSkin, theme: Theme, isSourc
     marker.rotation.x = Math.PI / 2;
     marker.position.y = 0.01;
     g.add(marker);
+  }
+
+  // Colorblind mode: add shape indicators for connection count
+  if (colorblind) {
+    const connCount = connections.length;
+    const indicatorMat = new MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.8 });
+    if (connCount === 2) {
+      // Two connections: small diamond
+      const dGeo = new BoxGeometry(0.008, 0.008, 0.008);
+      const d = new Mesh(dGeo, indicatorMat);
+      d.position.y = 0.02;
+      d.rotation.set(Math.PI / 4, 0, Math.PI / 4);
+      g.add(d);
+    } else if (connCount === 3) {
+      // T-pipe: triangle indicator (3 small spheres)
+      for (let i = 0; i < 3; i++) {
+        const angle = (i / 3) * Math.PI * 2;
+        const sGeo = new SphereGeometry(0.004, 4, 4);
+        const s = new Mesh(sGeo, indicatorMat);
+        s.position.set(Math.cos(angle) * 0.012, 0.025, Math.sin(angle) * 0.012);
+        g.add(s);
+      }
+    } else if (connCount === 4) {
+      // Cross: plus indicator
+      const barGeo = new BoxGeometry(0.025, 0.003, 0.005);
+      const bar1 = new Mesh(barGeo, indicatorMat);
+      bar1.position.y = 0.025;
+      g.add(bar1);
+      const bar2 = new Mesh(barGeo, indicatorMat);
+      bar2.position.y = 0.025;
+      bar2.rotation.y = Math.PI / 2;
+      g.add(bar2);
+    }
   }
 
   return g;
@@ -1078,6 +1190,12 @@ class GameUISystem extends createSystem({
         this.game.saveStats();
         this.showToast(this.game.stats.autoLockEnabled ? 'Auto-lock ON' : 'Auto-lock OFF');
       });
+      this.wireBtn(e, 'btn-colorblind', () => {
+        this.game.stats.colorblindMode = !this.game.stats.colorblindMode;
+        this.updateSettingsDisplay();
+        this.game.saveStats();
+        this.showToast(this.game.stats.colorblindMode ? 'Colorblind mode ON' : 'Colorblind mode OFF');
+      });
       this.wireBtn(e, 'btn-back', () => this.game.state = 'title');
     });
 
@@ -1212,6 +1330,7 @@ class GameUISystem extends createSystem({
     this.setText(e, 'music-vol', `${Math.round(this.audio.musicVol * 100)}`);
     this.setText(e, 'theme-name', THEMES[this.game.stats.selectedTheme].name);
     this.setText(e, 'autolock-label', `Auto-Lock: ${this.game.stats.autoLockEnabled ? 'ON' : 'OFF'}`);
+    this.setText(e, 'colorblind-label', `Colorblind: ${this.game.stats.colorblindMode ? 'ON' : 'OFF'}`);
   }
 
   private updateLeaderboard() {
@@ -1252,10 +1371,15 @@ class GameUISystem extends createSystem({
       `Play Time: ${Math.floor(s.playTime / 60)}:${String(Math.floor(s.playTime) % 60).padStart(2, '0')}`,
       `Perfect Levels: ${s.perfectLevels}`,
       `Level: ${s.level} (${getLevelTitle(s.level)})`,
+      `Stars: ${s.totalStars} (${s.threeStarLevels} perfect)`,
+      `Win Streak: ${s.currentStreak} (Best: ${s.longestStreak})`,
       `Endless Best: Lvl ${s.endlessBestLevel}`,
       `Achievements: ${this.game.unlockedAchievements.size}/${ACHIEVEMENTS.length}`,
     ];
     labels.forEach((l, i) => this.setText(e, `stat${i}`, l));
+    // Extra stat rows
+    this.setText(e, 'stat12', `Endless Best: Lvl ${s.endlessBestLevel}`);
+    this.setText(e, 'stat13', `Achievements: ${this.game.unlockedAchievements.size}/${ACHIEVEMENTS.length}`);
   }
 
   private updateSkins() {
@@ -1336,6 +1460,11 @@ class GameUISystem extends createSystem({
         this.setText(hudE, 'combo-label', this.game.combo > 1 ? `x${this.game.combo}` : '');
         this.setText(hudE, 'mode-label', this.game.mode.charAt(0).toUpperCase() + this.game.mode.slice(1));
         this.setText(hudE, 'freeze-label', this.game.freezeTimer > 0 ? `FROZEN ${Math.ceil(this.game.freezeTimer)}s` : '');
+        // Show move limit for puzzle mode
+        if (this.game.moveLimit > 0) {
+          const remaining = Math.max(0, this.game.moveLimit - this.game.moves);
+          this.setText(hudE, 'moves-label', `Moves: ${this.game.moves}/${this.game.moveLimit} (${remaining} left)`);
+        }
       }
       // Flow bar
       const flowE = this.panelEntities.get('flowbar');
@@ -1459,11 +1588,23 @@ class GameLogicSystem extends createSystem({}) {
   rotatePipe(x: number, y: number, ccw: boolean) {
     const cell = this.game.grid[y][x];
     if (cell.isLocked) return;
+    if (cell.rotAnim > 0) return; // Still animating
+
+    // Puzzle mode move limit
+    if (this.game.moveLimit > 0 && this.game.moves >= this.game.moveLimit) {
+      this.ui.showToast('No moves remaining!');
+      this.audio.playSfx('fail');
+      return;
+    }
 
     const prevType = cell.pipeType;
     cell.pipeType = ccw ? ROTATE_CCW[cell.pipeType] : ROTATE_CW[cell.pipeType];
     this.game.moveHistory.push({ x, y, prevType, newType: cell.pipeType });
     this.game.moves++;
+
+    // Start rotation animation
+    cell.rotAnim = 0.15; // 150ms animation
+    cell.rotDir = ccw ? -1 : 1;
     this.audio.playSfx('rotate');
 
     // Rebuild this cell's mesh
@@ -1501,6 +1642,11 @@ class GameLogicSystem extends createSystem({}) {
 
   private handleLevelComplete() {
     this.audio.playSfx('complete');
+
+    // Start victory chain glow
+    this.game.victoryPhase = 1;
+    this.game.victoryTimer = 0;
+
     const s = this.game.stats;
     const score = this.game.connectedPipes * 100 + Math.max(0, Math.floor((120 - this.game.timer) * 10)) + this.game.maxCombo * 50;
     this.game.score = score;
@@ -1565,10 +1711,30 @@ class GameLogicSystem extends createSystem({}) {
     this.game.leaderboard = this.game.leaderboard.slice(0, 20);
 
     // Rating
-    const rating = this.game.moves <= this.game.minMoves ? 'S' :
-      this.game.moves <= this.game.minMoves * 1.5 ? 'A' :
-      this.game.moves <= this.game.minMoves * 2 ? 'B' :
-      this.game.moves <= this.game.minMoves * 3 ? 'C' : 'D';
+    const starRating = getStarRating(this.game.moves, this.game.minMoves);
+    const rating = starRating === 3 ? 'S' : starRating === 2 ? 'A' : starRating === 1 ? 'B' : 'C';
+
+    // Stars tracking
+    s.totalStars += starRating;
+    if (starRating === 3) s.threeStarLevels++;
+
+    // Win streak
+    s.currentStreak++;
+    if (s.currentStreak > s.longestStreak) s.longestStreak = s.currentStreak;
+
+    // Mode-specific tracking
+    if (this.game.mode === 'puzzle') s.puzzleClears++;
+    if (this.game.mode === 'practice') s.practiceClears++;
+
+    // Personal bests per mode
+    const modeKey = this.game.mode;
+    if (!s.bestModeTimes[modeKey] || this.game.timer < s.bestModeTimes[modeKey]) {
+      s.bestModeTimes[modeKey] = this.game.timer;
+    }
+    if (!s.bestModeScores[modeKey] || score > s.bestModeScores[modeKey]) {
+      s.bestModeScores[modeKey] = score;
+      this.ui.showToast(`New personal best: ${score}!`);
+    }
 
     this.game.saveStats();
 
@@ -1584,7 +1750,7 @@ class GameLogicSystem extends createSystem({}) {
       setText('result-moves', `Moves: ${this.game.moves}`);
       setText('result-time', `Time: ${Math.floor(this.game.timer / 60)}:${String(Math.floor(this.game.timer) % 60).padStart(2, '0')}`);
       setText('result-combo', `Best Combo: x${this.game.maxCombo}`);
-      setText('result-rating', `Rating: ${rating}`);
+      setText('result-rating', `Rating: ${rating} ${'*'.repeat(starRating)}${'_'.repeat(3 - starRating)}`);
       setText('result-pipes', `Pipes Connected: ${this.game.connectedPipes}`);
       if (this.game.mode === 'endless') {
         setText('result-title', `LEVEL ${this.game.level} COMPLETE!`);
@@ -1617,6 +1783,10 @@ class GameLogicSystem extends createSystem({}) {
           this.game.state = 'playing';
           this.audio.playSfx('go');
           this.audio.startMusic();
+          // Practice mode: show faint solution overlay
+          if (this.game.mode === 'practice') {
+            revealSolution(this.game, true, 0.15); // Very faint ghost
+          }
         } else {
           this.audio.playSfx('countdown');
           this.countdownTimer = 1;
@@ -1651,6 +1821,7 @@ class GameLogicSystem extends createSystem({}) {
       if (this.game.mode === 'timed' && this.game.timeLimit > 0 && this.game.freezeTimer <= 0) {
         if (this.game.timer >= this.game.timeLimit) {
           this.audio.playSfx('fail');
+          this.game.stats.currentStreak = 0; // Reset streak on failure
           this.game.state = 'gameover';
           const goE = (this.ui as any).panelEntities.get('gameover');
           if (goE) {
@@ -1701,6 +1872,96 @@ class GameLogicSystem extends createSystem({}) {
         if (p.position.x > 5) p.position.x = -5;
         if (p.position.x < -5) p.position.x = 5;
       }
+    }
+
+    // Pipe rotation animation
+    for (let y = 0; y < this.game.gridSize; y++) {
+      for (let x = 0; x < this.game.gridSize; x++) {
+        const cell = this.game.grid[y]?.[x];
+        if (!cell?.mesh) continue;
+        if (cell.rotAnim > 0) {
+          cell.rotAnim -= delta;
+          if (cell.rotAnim <= 0) {
+            cell.rotAnim = 0;
+            cell.mesh.rotation.y = 0; // Reset to final position
+          } else {
+            // Smooth rotation: animate the remaining angle
+            const progress = 1 - (cell.rotAnim / 0.15);
+            const eased = 1 - Math.pow(1 - progress, 3); // ease out cubic
+            cell.mesh.rotation.y = cell.rotDir * (Math.PI / 2) * (1 - eased);
+          }
+        }
+      }
+    }
+
+    // Entrance animation
+    if (this.game.entranceActive) {
+      this.game.entranceTimer += delta;
+      let allDone = true;
+      for (let y = 0; y < this.game.gridSize; y++) {
+        for (let x = 0; x < this.game.gridSize; x++) {
+          const cell = this.game.grid[y]?.[x];
+          if (!cell?.mesh) continue;
+          if (cell.entranceProgress >= 1) continue;
+          const elapsed = this.game.entranceTimer - cell.entranceDelay;
+          if (elapsed <= 0) {
+            cell.mesh.scale.setScalar(0);
+            cell.mesh.visible = false;
+            allDone = false;
+            continue;
+          }
+          cell.mesh.visible = true;
+          cell.entranceProgress = Math.min(1, elapsed / 0.25);
+          const t = cell.entranceProgress;
+          const eased = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+          const scale = eased * (1 + (1 - t) * 0.15); // slight overshoot
+          cell.mesh.scale.setScalar(Math.min(scale, 1.05));
+          if (cell.entranceProgress < 1) allDone = false;
+        }
+      }
+      if (allDone) {
+        this.game.entranceActive = false;
+        // Ensure all scales are exactly 1
+        for (let y = 0; y < this.game.gridSize; y++) {
+          for (let x = 0; x < this.game.gridSize; x++) {
+            const cell = this.game.grid[y]?.[x];
+            if (cell?.mesh) cell.mesh.scale.setScalar(1);
+          }
+        }
+      }
+    }
+
+    // Victory path glow sequence
+    if (this.game.victoryPhase > 0 && this.game.connectedPath.length > 0) {
+      this.game.victoryTimer += delta;
+      const glowSpeed = 0.04; // seconds per cell
+      const glowIdx = Math.floor(this.game.victoryTimer / glowSpeed);
+      for (let i = 0; i < this.game.connectedPath.length; i++) {
+        const [cx, cy] = this.game.connectedPath[i];
+        const cell = this.game.grid[cy]?.[cx];
+        if (!cell?.mesh) continue;
+        if (i <= glowIdx) {
+          // Chain glow: pulsing bright
+          const fadeFactor = Math.max(0, 1 - (glowIdx - i) * 0.05);
+          const pulse = 0.8 + Math.sin(Date.now() * 0.01 + i * 0.5) * 0.2;
+          for (const child of cell.mesh.children) {
+            if (child instanceof Mesh && child.material instanceof MeshStandardMaterial) {
+              (child.material as MeshStandardMaterial).emissiveIntensity = pulse * fadeFactor;
+            }
+          }
+        }
+      }
+      // End victory sequence after all cells glowed
+      if (glowIdx > this.game.connectedPath.length + 10) {
+        this.game.victoryPhase = 0;
+        this.game.victoryTimer = 0;
+      }
+    }
+
+    // Puzzle mode: check move limit expiry
+    if (this.game.state === 'playing' && this.game.moveLimit > 0 && this.game.moves >= this.game.moveLimit && !this.game.isComplete) {
+      // Give 1 second grace after last move, then check if completed
+      // Actually checked inline when move happens, but handle timeout
     }
 
     // Grid glow animation
@@ -1769,7 +2030,7 @@ function rebuildCellMesh(game: GameStateManager, x: number, y: number) {
   }
   const theme = THEMES[game.stats.selectedTheme];
   const skin = PIPE_SKINS[game.stats.selectedSkin];
-  const mesh = buildPipeMesh(cell.pipeType, skin, theme, cell.isSource, cell.isDrain, cell.isLocked);
+  const mesh = buildPipeMesh(cell.pipeType, skin, theme, cell.isSource, cell.isDrain, cell.isLocked, gameRef?.stats?.colorblindMode ?? false);
   const pos = getCellWorldPos(game, x, y);
   mesh.position.copy(pos);
   game.gridGroup.add(mesh);
@@ -2004,7 +2265,7 @@ function updateFlowParticles(game: GameStateManager, delta: number) {
 // Reveal solution: show ghost pipes in solved position
 let revealOverlays: Mesh[] = [];
 
-function revealSolution(game: GameStateManager, show: boolean) {
+function revealSolution(game: GameStateManager, show: boolean, opacity = 0.35) {
   // Clean up any existing overlays
   for (const m of revealOverlays) {
     if (m.parent) m.parent.remove(m);
@@ -2028,7 +2289,7 @@ function revealSolution(game: GameStateManager, show: boolean) {
       const pipeRadius = 0.012;
       const halfCell = 0.05;
       const ghostMat = new MeshBasicMaterial({
-        color: theme.flow, transparent: true, opacity: 0.35, blending: AdditiveBlending,
+        color: theme.flow, transparent: true, opacity, blending: AdditiveBlending,
       });
 
       for (const dir of connections) {
@@ -2132,16 +2393,39 @@ function startGame(game: GameStateManager, audio: AudioManager) {
   game.isComplete = false;
   game.flowAnimProgress = 0;
   game.countdownVal = 3;
+  game.victoryPhase = 0;
+  game.victoryTimer = 0;
 
   // Time limits based on mode
   game.timeLimit = game.mode === 'timed' ? (game.difficulty === 'easy' ? 120 : game.difficulty === 'medium' ? 90 : 60) : 0;
   if (game.mode === 'speed') game.timeLimit = 30;
 
+  // Puzzle mode: move limit = min moves + small buffer
+  game.moveLimit = 0;
+  if (game.mode === 'puzzle') {
+    // Set after grid generation since minMoves calculated there
+  }
+
   game.generateGrid(size, rng);
   game.checkConnections();
+
+  // Puzzle mode: set move limit after grid generation
+  if (game.mode === 'puzzle') {
+    game.moveLimit = game.minMoves + Math.max(3, Math.floor(game.minMoves * 0.5));
+  }
+
+  // Practice mode: show solution hints (via reveal overlays that stay)
+  if (game.mode === 'practice') {
+    // Solution hints shown after grid builds (triggered after countdown)
+  }
+
   buildGrid(game, worldRef.scene);
   updateGridVisuals(game);
   buildFlowParticles(game, worldRef.scene, THEMES[game.stats.selectedTheme]);
+
+  // Start entrance animation
+  game.entranceActive = true;
+  game.entranceTimer = 0;
 
   audio.playSfx('gameStart');
   game.state = 'countdown';

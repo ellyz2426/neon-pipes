@@ -10,7 +10,7 @@
           "Flow: 0%"
         ],
         "properties": {
-          "fontsize": 10,
+          "fontsize": "{10}",
           "color": "#00ffcc",
           "name": "flow-text"
         },

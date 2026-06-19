@@ -10,7 +10,7 @@
           "LEVEL COMPLETE!"
         ],
         "properties": {
-          "fontsize": 20,
+          "fontsize": "{20}",
           "fontweight": "bold",
           "color": "#00ffcc",
           "name": "result-title"
@@ -24,7 +24,7 @@
           "---"
         ],
         "properties": {
-          "fontsize": 16,
+          "fontsize": "{16}",
           "color": "#ffcc00",
           "name": "result-stars"
         },
@@ -41,7 +41,7 @@
               "Score: 0"
             ],
             "properties": {
-              "fontsize": 11,
+              "fontsize": "{11}",
               "color": "#00ffcc",
               "name": "result-score"
             },
@@ -54,7 +54,7 @@
               "Moves: 0"
             ],
             "properties": {
-              "fontsize": 11,
+              "fontsize": "{11}",
               "color": "#ffcc00",
               "name": "result-moves"
             },
@@ -67,7 +67,7 @@
               "Time: 0:00"
             ],
             "properties": {
-              "fontsize": 11,
+              "fontsize": "{11}",
               "color": "#ff66ff",
               "name": "result-time"
             },
@@ -80,7 +80,7 @@
               "Best Combo: x1"
             ],
             "properties": {
-              "fontsize": 11,
+              "fontsize": "{11}",
               "color": "#66ff66",
               "name": "result-combo"
             },
@@ -93,7 +93,7 @@
               "Rating: B"
             ],
             "properties": {
-              "fontsize": 11,
+              "fontsize": "{11}",
               "color": "#ff8844",
               "name": "result-rating"
             },
@@ -106,7 +106,7 @@
               "Pipes Connected: 0"
             ],
             "properties": {
-              "fontsize": 11,
+              "fontsize": "{11}",
               "color": "#88ccff",
               "name": "result-pipes"
             },
@@ -119,7 +119,7 @@
               "+0 XP"
             ],
             "properties": {
-              "fontsize": 10,
+              "fontsize": "{10}",
               "color": "#aaaaff",
               "name": "result-xp"
             },
@@ -132,7 +132,7 @@
               "No bonus"
             ],
             "properties": {
-              "fontsize": 10,
+              "fontsize": "{10}",
               "color": "#ffaa44",
               "name": "result-bonus"
             },
@@ -157,7 +157,7 @@
               "NEXT"
             ],
             "properties": {
-              "fontsize": 13,
+              "fontsize": "{13}",
               "color": "#00ffcc",
               "name": "btn-next",
               "cursor": "pointer",
@@ -175,7 +175,7 @@
               "RETRY"
             ],
             "properties": {
-              "fontsize": 13,
+              "fontsize": "{13}",
               "color": "#ff8844",
               "name": "btn-rematch",
               "cursor": "pointer",
@@ -193,7 +193,7 @@
               "MENU"
             ],
             "properties": {
-              "fontsize": 13,
+              "fontsize": "{13}",
               "color": "#aaaaaa",
               "name": "btn-menu",
               "cursor": "pointer",

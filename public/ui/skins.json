@@ -10,7 +10,7 @@
           "PIPE SKINS"
         ],
         "properties": {
-          "fontsize": 18,
+          "fontsize": "{18}",
           "fontweight": "bold",
           "color": "#ff8844"
         },
@@ -27,7 +27,7 @@
               "[*] Neon Cyan (Default)"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#00ffcc",
               "name": "skin0",
               "cursor": "pointer",
@@ -45,7 +45,7 @@
               "[ ] Solar Flare (50 pipes)"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#ff6644",
               "name": "skin1",
               "cursor": "pointer",
@@ -63,7 +63,7 @@
               "[ ] Plasma Pink (5K score)"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#ff66ff",
               "name": "skin2",
               "cursor": "pointer",
@@ -81,7 +81,7 @@
               "[ ] Frost Blue (10 games)"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#4488ff",
               "name": "skin3",
               "cursor": "pointer",
@@ -99,7 +99,7 @@
               "[ ] Toxic Green (x5 combo)"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#66ff44",
               "name": "skin4",
               "cursor": "pointer",
@@ -117,7 +117,7 @@
               "[ ] Royal Gold (perfect game)"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#ffcc00",
               "name": "skin5",
               "cursor": "pointer",
@@ -135,7 +135,7 @@
               "[ ] Void Purple (all modes)"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#8844ff",
               "name": "skin6",
               "cursor": "pointer",
@@ -153,7 +153,7 @@
               "[ ] Inferno (80% accuracy)"
             ],
             "properties": {
-              "fontsize": 9,
+              "fontsize": "{9}",
               "color": "#ff4444",
               "name": "skin7",
               "cursor": "pointer",
@@ -179,7 +179,7 @@
           "BACK"
         ],
         "properties": {
-          "fontsize": 10,
+          "fontsize": "{10}",
           "color": "#666666",
           "name": "btn-back",
           "cursor": "pointer",

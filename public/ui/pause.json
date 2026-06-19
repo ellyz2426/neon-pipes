@@ -10,7 +10,7 @@
           "PAUSED"
         ],
         "properties": {
-          "fontsize": 18,
+          "fontsize": "{18}",
           "fontweight": "bold",
           "color": "#00ffcc"
         },
@@ -27,7 +27,7 @@
               "RESUME"
             ],
             "properties": {
-              "fontsize": 14,
+              "fontsize": "{14}",
               "color": "#00ffcc",
               "name": "btn-resume",
               "cursor": "pointer",
@@ -45,7 +45,7 @@
               "QUIT"
             ],
             "properties": {
-              "fontsize": 14,
+              "fontsize": "{14}",
               "color": "#ff6666",
               "name": "btn-quit",
               "cursor": "pointer",

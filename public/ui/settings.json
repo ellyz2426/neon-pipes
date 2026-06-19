@@ -10,7 +10,7 @@
           "SETTINGS"
         ],
         "properties": {
-          "fontsize": 18,
+          "fontsize": "{18}",
           "fontweight": "bold",
           "color": "#aaaaaa"
         },
@@ -31,7 +31,7 @@
                   "Master:"
                 ],
                 "properties": {
-                  "fontsize": 10,
+                  "fontsize": "{10}",
                   "color": "#aaaaaa"
                 },
                 "dataUid": "uid-5"
@@ -43,7 +43,7 @@
                   "-"
                 ],
                 "properties": {
-                  "fontsize": 10,
+                  "fontsize": "{10}",
                   "color": "#666666",
                   "name": "btn-master-down",
                   "cursor": "pointer",
@@ -60,7 +60,7 @@
                   "100"
                 ],
                 "properties": {
-                  "fontsize": 10,
+                  "fontsize": "{10}",
                   "color": "#00ffcc",
                   "name": "master-vol"
                 },
@@ -73,7 +73,7 @@
                   "+"
                 ],
                 "properties": {
-                  "fontsize": 10,
+                  "fontsize": "{10}",
                   "color": "#666666",
                   "name": "btn-master-up",
                   "cursor": "pointer",
@@ -102,7 +102,7 @@
                   "SFX:"
                 ],
                 "properties": {
-                  "fontsize": 10,
+                  "fontsize": "{10}",
                   "color": "#aaaaaa"
                 },
                 "dataUid": "uid-10"
@@ -114,7 +114,7 @@
                   "-"
                 ],
                 "properties": {
-                  "fontsize": 10,
+                  "fontsize": "{10}",
                   "color": "#666666",
                   "name": "btn-sfx-down",
                   "cursor": "pointer",
@@ -131,7 +131,7 @@
                   "100"
                 ],
                 "properties": {
-                  "fontsize": 10,
+                  "fontsize": "{10}",
                   "color": "#00ffcc",
                   "name": "sfx-vol"
                 },
@@ -144,7 +144,7 @@
                   "+"
                 ],
                 "properties": {
-                  "fontsize": 10,
+                  "fontsize": "{10}",
                   "color": "#666666",
                   "name": "btn-sfx-up",
                   "cursor": "pointer",
@@ -173,7 +173,7 @@
                   "Music:"
                 ],
                 "properties": {
-                  "fontsize": 10,
+                  "fontsize": "{10}",
                   "color": "#aaaaaa"
                 },
                 "dataUid": "uid-15"
@@ -185,7 +185,7 @@
                   "-"
                 ],
                 "properties": {
-                  "fontsize": 10,
+                  "fontsize": "{10}",
                   "color": "#666666",
                   "name": "btn-music-down",
                   "cursor": "pointer",
@@ -202,7 +202,7 @@
                   "100"
                 ],
                 "properties": {
-                  "fontsize": 10,
+                  "fontsize": "{10}",
                   "color": "#00ffcc",
                   "name": "music-vol"
                 },
@@ -215,7 +215,7 @@
                   "+"
                 ],
                 "properties": {
-                  "fontsize": 10,
+                  "fontsize": "{10}",
                   "color": "#666666",
                   "name": "btn-music-up",
                   "cursor": "pointer",
@@ -244,7 +244,7 @@
                   "Theme:"
                 ],
                 "properties": {
-                  "fontsize": 10,
+                  "fontsize": "{10}",
                   "color": "#aaaaaa"
                 },
                 "dataUid": "uid-20"
@@ -256,7 +256,7 @@
                   "<"
                 ],
                 "properties": {
-                  "fontsize": 10,
+                  "fontsize": "{10}",
                   "color": "#666666",
                   "name": "btn-theme-prev",
                   "cursor": "pointer",
@@ -273,7 +273,7 @@
                   "Neon Holodeck"
                 ],
                 "properties": {
-                  "fontsize": 10,
+                  "fontsize": "{10}",
                   "color": "#00ffcc",
                   "name": "theme-name"
                 },
@@ -286,7 +286,7 @@
                   ">"
                 ],
                 "properties": {
-                  "fontsize": 10,
+                  "fontsize": "{10}",
                   "color": "#666666",
                   "name": "btn-theme-next",
                   "cursor": "pointer",
@@ -316,7 +316,7 @@
                   "Auto-Lock:"
                 ],
                 "properties": {
-                  "fontsize": 10,
+                  "fontsize": "{10}",
                   "color": "#aaaaaa"
                 },
                 "dataUid": "uid-25"
@@ -328,7 +328,7 @@
                   "TOGGLE"
                 ],
                 "properties": {
-                  "fontsize": 11,
+                  "fontsize": "{11}",
                   "color": "#44ff88",
                   "name": "btn-autolock",
                   "cursor": "pointer",
@@ -345,7 +345,7 @@
                   "Auto-Lock: OFF"
                 ],
                 "properties": {
-                  "fontsize": 10,
+                  "fontsize": "{10}",
                   "color": "#00ffcc",
                   "name": "autolock-label"
                 },
@@ -359,6 +359,61 @@
               "margintop": "4"
             },
             "dataUid": "uid-24"
+          },
+          {
+            "sourceTag": "container",
+            "type": "custom",
+            "children": [
+              {
+                "sourceTag": "text",
+                "type": "custom",
+                "children": [
+                  "Colorblind:"
+                ],
+                "properties": {
+                  "fontsize": "{10}",
+                  "color": "#aaaaaa"
+                },
+                "dataUid": "uid-29"
+              },
+              {
+                "sourceTag": "text",
+                "type": "custom",
+                "children": [
+                  "TOGGLE"
+                ],
+                "properties": {
+                  "fontsize": "{11}",
+                  "color": "#44aaff",
+                  "name": "btn-colorblind",
+                  "cursor": "pointer",
+                  "padding": "3",
+                  "backgroundcolor": "#001122",
+                  "borderradius": "2"
+                },
+                "dataUid": "uid-30"
+              },
+              {
+                "sourceTag": "text",
+                "type": "custom",
+                "children": [
+                  "Colorblind: OFF"
+                ],
+                "properties": {
+                  "fontsize": "{10}",
+                  "color": "#00ffcc",
+                  "name": "colorblind-label"
+                },
+                "dataUid": "uid-31"
+              }
+            ],
+            "properties": {
+              "flexdirection": "row",
+              "gap": "4",
+              "alignitems": "center",
+              "margintop": "2"
+            },
+            "dataUid": "uid-28"
           }
         ],
         "properties": {
@@ -375,7 +430,7 @@
           "BACK"
         ],
         "properties": {
-          "fontsize": 11,
+          "fontsize": "{11}",
           "color": "#666666",
           "name": "btn-back",
           "cursor": "pointer",
@@ -385,7 +440,7 @@
           "textalign": "center",
           "margintop": "6"
         },
-        "dataUid": "uid-28"
+        "dataUid": "uid-32"
       }
     ],
     "properties": {
@@ -404,7 +459,7 @@
         "column": 0
       },
       "end": {
-        "line": 34,
+        "line": 39,
         "column": 12
       }
     },
@@ -424,7 +479,7 @@
         "column": 2
       },
       "end": {
-        "line": 32,
+        "line": 37,
         "column": 14
       }
     },
@@ -670,11 +725,51 @@
     },
     "uid-28": {
       "start": {
+        "line": 32,
+        "column": 4
+      },
+      "end": {
+        "line": 36,
+        "column": 16
+      }
+    },
+    "uid-29": {
+      "start": {
         "line": 33,
-        "column": 2
+        "column": 6
       },
       "end": {
         "line": 33,
+        "column": 60
+      }
+    },
+    "uid-30": {
+      "start": {
+        "line": 34,
+        "column": 6
+      },
+      "end": {
+        "line": 34,
+        "column": 149
+      }
+    },
+    "uid-31": {
+      "start": {
+        "line": 35,
+        "column": 6
+      },
+      "end": {
+        "line": 35,
+        "column": 88
+      }
+    },
+    "uid-32": {
+      "start": {
+        "line": 38,
+        "column": 2
+      },
+      "end": {
+        "line": 38,
         "column": 170
       }
     }

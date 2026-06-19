@@ -10,7 +10,7 @@
           "SELECT MODE"
         ],
         "properties": {
-          "fontsize": 22,
+          "fontsize": "{22}",
           "fontweight": "bold",
           "color": "#00ffff"
         },
@@ -27,7 +27,7 @@
               "CAMPAIGN"
             ],
             "properties": {
-              "fontsize": 12,
+              "fontsize": "{12}",
               "color": "#00ffcc",
               "name": "btn-campaign",
               "cursor": "pointer",
@@ -45,7 +45,7 @@
               "TIME ATTACK"
             ],
             "properties": {
-              "fontsize": 12,
+              "fontsize": "{12}",
               "color": "#ffcc00",
               "name": "btn-timed",
               "cursor": "pointer",
@@ -63,7 +63,7 @@
               "ENDLESS"
             ],
             "properties": {
-              "fontsize": 12,
+              "fontsize": "{12}",
               "color": "#ff66ff",
               "name": "btn-endless",
               "cursor": "pointer",
@@ -81,7 +81,7 @@
               "ZEN"
             ],
             "properties": {
-              "fontsize": 12,
+              "fontsize": "{12}",
               "color": "#66ff66",
               "name": "btn-zen",
               "cursor": "pointer",
@@ -99,7 +99,7 @@
               "DAILY CHALLENGE"
             ],
             "properties": {
-              "fontsize": 12,
+              "fontsize": "{12}",
               "color": "#ff8844",
               "name": "btn-daily",
               "cursor": "pointer",
@@ -117,7 +117,7 @@
               "SPEED FLOW"
             ],
             "properties": {
-              "fontsize": 12,
+              "fontsize": "{12}",
               "color": "#88ccff",
               "name": "btn-speed",
               "cursor": "pointer",
@@ -135,7 +135,7 @@
               "PUZZLE PACK"
             ],
             "properties": {
-              "fontsize": 12,
+              "fontsize": "{12}",
               "color": "#ff6666",
               "name": "btn-puzzle",
               "cursor": "pointer",
@@ -153,7 +153,7 @@
               "PRACTICE"
             ],
             "properties": {
-              "fontsize": 12,
+              "fontsize": "{12}",
               "color": "#aaaaaa",
               "name": "btn-practice",
               "cursor": "pointer",
@@ -179,7 +179,7 @@
           "BACK"
         ],
         "properties": {
-          "fontsize": 11,
+          "fontsize": "{11}",
           "color": "#666666",
           "name": "btn-back",
           "cursor": "pointer",

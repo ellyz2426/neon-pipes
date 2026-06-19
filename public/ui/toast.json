@@ -10,7 +10,7 @@
           "Achievement Unlocked!"
         ],
         "properties": {
-          "fontsize": 11,
+          "fontsize": "{11}",
           "color": "#00ffcc",
           "name": "toast-text"
         },

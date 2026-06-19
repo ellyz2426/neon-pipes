@@ -10,7 +10,7 @@
           "NEON PIPES"
         ],
         "properties": {
-          "fontsize": 28,
+          "fontsize": "{28}",
           "fontweight": "bold",
           "color": "#00ffff"
         },
@@ -23,7 +23,7 @@
           "Flow Puzzle VR"
         ],
         "properties": {
-          "fontsize": 12,
+          "fontsize": "{12}",
           "color": "#00aacc",
           "name": "subtitle"
         },
@@ -36,7 +36,7 @@
           "Level 1 -- Novice"
         ],
         "properties": {
-          "fontsize": 10,
+          "fontsize": "{10}",
           "color": "#888888",
           "name": "level-display"
         },
@@ -53,7 +53,7 @@
               "PLAY"
             ],
             "properties": {
-              "fontsize": 14,
+              "fontsize": "{14}",
               "color": "#00ffcc",
               "name": "btn-play",
               "cursor": "pointer",
@@ -71,7 +71,7 @@
               "LEADERBOARD"
             ],
             "properties": {
-              "fontsize": 14,
+              "fontsize": "{14}",
               "color": "#ffcc00",
               "name": "btn-scores",
               "cursor": "pointer",
@@ -89,7 +89,7 @@
               "ACHIEVEMENTS"
             ],
             "properties": {
-              "fontsize": 14,
+              "fontsize": "{14}",
               "color": "#ff66ff",
               "name": "btn-achievements",
               "cursor": "pointer",
@@ -107,7 +107,7 @@
               "STATS"
             ],
             "properties": {
-              "fontsize": 14,
+              "fontsize": "{14}",
               "color": "#66ff66",
               "name": "btn-stats",
               "cursor": "pointer",
@@ -125,7 +125,7 @@
               "PIPE SKINS"
             ],
             "properties": {
-              "fontsize": 14,
+              "fontsize": "{14}",
               "color": "#ff8844",
               "name": "btn-themes",
               "cursor": "pointer",
@@ -143,7 +143,7 @@
               "SETTINGS"
             ],
             "properties": {
-              "fontsize": 14,
+              "fontsize": "{14}",
               "color": "#aaaaaa",
               "name": "btn-settings",
               "cursor": "pointer",
@@ -161,7 +161,7 @@
               "HELP"
             ],
             "properties": {
-              "fontsize": 14,
+              "fontsize": "{14}",
               "color": "#8888ff",
               "name": "btn-help",
               "cursor": "pointer",

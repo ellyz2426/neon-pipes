@@ -10,7 +10,7 @@
           "CAMPAIGN"
         ],
         "properties": {
-          "fontsize": 22,
+          "fontsize": "{22}",
           "fontweight": "bold",
           "color": "#00ffff"
         },
@@ -23,7 +23,7 @@
           "Zone 1: Tutorial Basin"
         ],
         "properties": {
-          "fontsize": 10,
+          "fontsize": "{10}",
           "color": "#00aacc",
           "name": "zone-name"
         },
@@ -36,7 +36,7 @@
           "Learn the basics of pipe flow"
         ],
         "properties": {
-          "fontsize": 9,
+          "fontsize": "{9}",
           "color": "#888888",
           "name": "zone-desc"
         },
@@ -49,7 +49,7 @@
           "Level 1 / 6"
         ],
         "properties": {
-          "fontsize": 10,
+          "fontsize": "{10}",
           "color": "#ffcc00",
           "name": "zone-progress"
         },
@@ -66,7 +66,7 @@
               "Zone 1: Tutorial Basin"
             ],
             "properties": {
-              "fontsize": 11,
+              "fontsize": "{11}",
               "color": "#00ffcc",
               "name": "btn-zone1",
               "cursor": "pointer",
@@ -84,7 +84,7 @@
               "Zone 2: Flow Junction"
             ],
             "properties": {
-              "fontsize": 11,
+              "fontsize": "{11}",
               "color": "#44ff44",
               "name": "btn-zone2",
               "cursor": "pointer",
@@ -102,7 +102,7 @@
               "Zone 3: Pressure Works"
             ],
             "properties": {
-              "fontsize": 11,
+              "fontsize": "{11}",
               "color": "#ffcc00",
               "name": "btn-zone3",
               "cursor": "pointer",
@@ -120,7 +120,7 @@
               "Zone 4: Neon Labyrinth"
             ],
             "properties": {
-              "fontsize": 11,
+              "fontsize": "{11}",
               "color": "#ff8844",
               "name": "btn-zone4",
               "cursor": "pointer",
@@ -138,7 +138,7 @@
               "Zone 5: Flux Core"
             ],
             "properties": {
-              "fontsize": 11,
+              "fontsize": "{11}",
               "color": "#ff44ff",
               "name": "btn-zone5",
               "cursor": "pointer",
@@ -156,7 +156,7 @@
               "Zone 6: Quantum Grid"
             ],
             "properties": {
-              "fontsize": 11,
+              "fontsize": "{11}",
               "color": "#ff4444",
               "name": "btn-zone6",
               "cursor": "pointer",
@@ -182,7 +182,7 @@
           "BACK"
         ],
         "properties": {
-          "fontsize": 12,
+          "fontsize": "{12}",
           "color": "#aaaaaa",
           "name": "btn-back",
           "cursor": "pointer",

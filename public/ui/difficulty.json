@@ -10,7 +10,7 @@
           "DIFFICULTY"
         ],
         "properties": {
-          "fontsize": 22,
+          "fontsize": "{22}",
           "fontweight": "bold",
           "color": "#00ffff"
         },
@@ -27,7 +27,7 @@
               "EASY (5x5)"
             ],
             "properties": {
-              "fontsize": 14,
+              "fontsize": "{14}",
               "color": "#66ff66",
               "name": "btn-easy",
               "cursor": "pointer",
@@ -45,7 +45,7 @@
               "MEDIUM (7x7)"
             ],
             "properties": {
-              "fontsize": 14,
+              "fontsize": "{14}",
               "color": "#ffcc00",
               "name": "btn-medium",
               "cursor": "pointer",
@@ -63,7 +63,7 @@
               "HARD (9x9)"
             ],
             "properties": {
-              "fontsize": 14,
+              "fontsize": "{14}",
               "color": "#ff6666",
               "name": "btn-hard",
               "cursor": "pointer",
@@ -89,7 +89,7 @@
           "BACK"
         ],
         "properties": {
-          "fontsize": 11,
+          "fontsize": "{11}",
           "color": "#666666",
           "name": "btn-back",
           "cursor": "pointer",

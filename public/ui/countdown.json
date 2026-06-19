@@ -10,7 +10,7 @@
           "3"
         ],
         "properties": {
-          "fontsize": 36,
+          "fontsize": "{36}",
           "fontweight": "bold",
           "color": "#00ffcc",
           "name": "countdown-text"
