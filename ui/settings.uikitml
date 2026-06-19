@@ -26,5 +26,5 @@
       <text fontSize={10} color="#666666" name="btn-theme-next" cursor="pointer" padding={3} backgroundColor="#1a1a1a" borderRadius={2}>&gt;</text>
     </container>
   </container>
-  <text fontSize={11} color="#666666" name="btn-back" cursor="pointer" hover={{ backgroundColor: "#333333" }} padding={4} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center" marginTop={6}>BACK</text>
+  <text fontSize={11} color="#666666" name="btn-back" cursor="pointer" padding={6} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center" marginTop={6}>BACK</text>
 </container>

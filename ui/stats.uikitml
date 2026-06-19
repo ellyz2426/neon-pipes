@@ -12,5 +12,5 @@
     <text fontSize={9} color="#00ffcc" name="stat8">Perfect Levels: 0</text>
     <text fontSize={9} color="#00ffcc" name="stat9">Level: 1 (Novice)</text>
   </container>
-  <text fontSize={11} color="#666666" name="btn-back" cursor="pointer" hover={{ backgroundColor: "#333333" }} padding={4} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center" marginTop={6}>BACK</text>
+  <text fontSize={11} color="#666666" name="btn-back" cursor="pointer" padding={4} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center" marginTop={6}>BACK</text>
 </container>

@@ -1,0 +1,6 @@
+<container flexDirection="row" gap={8} padding={6}>
+  <text fontSize={10} color="#ffcc00" name="btn-undo" cursor="pointer" padding={6} borderRadius={3} backgroundColor="#221a00" textAlign="center">UNDO</text>
+  <text fontSize={10} color="#00ffcc" name="btn-hint" cursor="pointer" padding={6} borderRadius={3} backgroundColor="#001a11" textAlign="center">HINT</text>
+  <text fontSize={10} color="#ff66ff" name="btn-freeze" cursor="pointer" padding={6} borderRadius={3} backgroundColor="#220022" textAlign="center">FREEZE</text>
+  <text fontSize={10} color="#ff4444" name="btn-restart" cursor="pointer" padding={6} borderRadius={3} backgroundColor="#220000" textAlign="center">RESTART</text>
+</container>

@@ -31,10 +31,6 @@
               "color": "#00ffcc",
               "name": "btn-campaign",
               "cursor": "pointer",
-              "hover": "{{",
-              "backgroundcolor:": "",
-              "\"#004444\"": "",
-              "}}": "",
               "padding": "{5}",
               "borderradius": "{4}",
               "backgroundcolor": "#002222",
@@ -53,10 +49,6 @@
               "color": "#ffcc00",
               "name": "btn-timed",
               "cursor": "pointer",
-              "hover": "{{",
-              "backgroundcolor:": "",
-              "\"#444400\"": "",
-              "}}": "",
               "padding": "{5}",
               "borderradius": "{4}",
               "backgroundcolor": "#222200",
@@ -75,10 +67,6 @@
               "color": "#ff66ff",
               "name": "btn-endless",
               "cursor": "pointer",
-              "hover": "{{",
-              "backgroundcolor:": "",
-              "\"#440044\"": "",
-              "}}": "",
               "padding": "{5}",
               "borderradius": "{4}",
               "backgroundcolor": "#220022",
@@ -97,10 +85,6 @@
               "color": "#66ff66",
               "name": "btn-zen",
               "cursor": "pointer",
-              "hover": "{{",
-              "backgroundcolor:": "",
-              "\"#004400\"": "",
-              "}}": "",
               "padding": "{5}",
               "borderradius": "{4}",
               "backgroundcolor": "#002200",
@@ -119,10 +103,6 @@
               "color": "#ff8844",
               "name": "btn-daily",
               "cursor": "pointer",
-              "hover": "{{",
-              "backgroundcolor:": "",
-              "\"#442200\"": "",
-              "}}": "",
               "padding": "{5}",
               "borderradius": "{4}",
               "backgroundcolor": "#221100",
@@ -141,10 +121,6 @@
               "color": "#88ccff",
               "name": "btn-speed",
               "cursor": "pointer",
-              "hover": "{{",
-              "backgroundcolor:": "",
-              "\"#223344\"": "",
-              "}}": "",
               "padding": "{5}",
               "borderradius": "{4}",
               "backgroundcolor": "#112233",
@@ -163,10 +139,6 @@
               "color": "#ff6666",
               "name": "btn-puzzle",
               "cursor": "pointer",
-              "hover": "{{",
-              "backgroundcolor:": "",
-              "\"#442222\"": "",
-              "}}": "",
               "padding": "{5}",
               "borderradius": "{4}",
               "backgroundcolor": "#221111",
@@ -185,10 +157,6 @@
               "color": "#aaaaaa",
               "name": "btn-practice",
               "cursor": "pointer",
-              "hover": "{{",
-              "backgroundcolor:": "",
-              "\"#333333\"": "",
-              "}}": "",
               "padding": "{5}",
               "borderradius": "{4}",
               "backgroundcolor": "#1a1a1a",
@@ -215,10 +183,6 @@
           "color": "#666666",
           "name": "btn-back",
           "cursor": "pointer",
-          "hover": "{{",
-          "backgroundcolor:": "",
-          "\"#333333\"": "",
-          "}}": "",
           "padding": "{4}",
           "borderradius": "{4}",
           "backgroundcolor": "#1a1a1a",
@@ -275,7 +239,7 @@
       },
       "end": {
         "line": 3,
-        "column": 205
+        "column": 166
       }
     },
     "uid-5": {
@@ -285,7 +249,7 @@
       },
       "end": {
         "line": 4,
-        "column": 205
+        "column": 166
       }
     },
     "uid-6": {
@@ -295,7 +259,7 @@
       },
       "end": {
         "line": 5,
-        "column": 203
+        "column": 164
       }
     },
     "uid-7": {
@@ -305,7 +269,7 @@
       },
       "end": {
         "line": 6,
-        "column": 195
+        "column": 156
       }
     },
     "uid-8": {
@@ -315,7 +279,7 @@
       },
       "end": {
         "line": 7,
-        "column": 209
+        "column": 170
       }
     },
     "uid-9": {
@@ -325,7 +289,7 @@
       },
       "end": {
         "line": 8,
-        "column": 204
+        "column": 165
       }
     },
     "uid-10": {
@@ -335,7 +299,7 @@
       },
       "end": {
         "line": 9,
-        "column": 206
+        "column": 167
       }
     },
     "uid-11": {
@@ -345,7 +309,7 @@
       },
       "end": {
         "line": 10,
-        "column": 205
+        "column": 166
       }
     },
     "uid-12": {
@@ -355,7 +319,7 @@
       },
       "end": {
         "line": 12,
-        "column": 209
+        "column": 170
       }
     }
   }

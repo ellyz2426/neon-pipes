@@ -9,8 +9,8 @@
     <text fontSize={11} color="#88ccff" name="result-pipes">Pipes Connected: 0</text>
   </container>
   <container flexDirection="row" gap={8} marginTop={8}>
-    <text fontSize={13} color="#00ffcc" name="btn-next" cursor="pointer" hover={{ backgroundColor: "#004444" }} padding={6} borderRadius={4} backgroundColor="#002222" textAlign="center">NEXT</text>
-    <text fontSize={13} color="#ff8844" name="btn-rematch" cursor="pointer" hover={{ backgroundColor: "#442200" }} padding={6} borderRadius={4} backgroundColor="#221100" textAlign="center">RETRY</text>
-    <text fontSize={13} color="#aaaaaa" name="btn-menu" cursor="pointer" hover={{ backgroundColor: "#333333" }} padding={6} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center">MENU</text>
+    <text fontSize={13} color="#00ffcc" name="btn-next" cursor="pointer" padding={6} borderRadius={4} backgroundColor="#002222" textAlign="center">NEXT</text>
+    <text fontSize={13} color="#ff8844" name="btn-rematch" cursor="pointer" padding={6} borderRadius={4} backgroundColor="#221100" textAlign="center">RETRY</text>
+    <text fontSize={13} color="#aaaaaa" name="btn-menu" cursor="pointer" padding={6} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center">MENU</text>
   </container>
 </container>

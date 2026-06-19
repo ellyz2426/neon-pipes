@@ -1,14 +1,14 @@
 <container flexDirection="column" alignItems="center" gap={8} padding={16}>
   <text fontSize={22} fontWeight="bold" color="#00ffff">SELECT MODE</text>
   <container flexDirection="column" gap={5} marginTop={6}>
-    <text fontSize={12} color="#00ffcc" name="btn-campaign" cursor="pointer" hover={{ backgroundColor: "#004444" }} padding={5} borderRadius={4} backgroundColor="#002222" textAlign="center">CAMPAIGN</text>
-    <text fontSize={12} color="#ffcc00" name="btn-timed" cursor="pointer" hover={{ backgroundColor: "#444400" }} padding={5} borderRadius={4} backgroundColor="#222200" textAlign="center">TIME ATTACK</text>
-    <text fontSize={12} color="#ff66ff" name="btn-endless" cursor="pointer" hover={{ backgroundColor: "#440044" }} padding={5} borderRadius={4} backgroundColor="#220022" textAlign="center">ENDLESS</text>
-    <text fontSize={12} color="#66ff66" name="btn-zen" cursor="pointer" hover={{ backgroundColor: "#004400" }} padding={5} borderRadius={4} backgroundColor="#002200" textAlign="center">ZEN</text>
-    <text fontSize={12} color="#ff8844" name="btn-daily" cursor="pointer" hover={{ backgroundColor: "#442200" }} padding={5} borderRadius={4} backgroundColor="#221100" textAlign="center">DAILY CHALLENGE</text>
-    <text fontSize={12} color="#88ccff" name="btn-speed" cursor="pointer" hover={{ backgroundColor: "#223344" }} padding={5} borderRadius={4} backgroundColor="#112233" textAlign="center">SPEED FLOW</text>
-    <text fontSize={12} color="#ff6666" name="btn-puzzle" cursor="pointer" hover={{ backgroundColor: "#442222" }} padding={5} borderRadius={4} backgroundColor="#221111" textAlign="center">PUZZLE PACK</text>
-    <text fontSize={12} color="#aaaaaa" name="btn-practice" cursor="pointer" hover={{ backgroundColor: "#333333" }} padding={5} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center">PRACTICE</text>
+    <text fontSize={12} color="#00ffcc" name="btn-campaign" cursor="pointer" padding={5} borderRadius={4} backgroundColor="#002222" textAlign="center">CAMPAIGN</text>
+    <text fontSize={12} color="#ffcc00" name="btn-timed" cursor="pointer" padding={5} borderRadius={4} backgroundColor="#222200" textAlign="center">TIME ATTACK</text>
+    <text fontSize={12} color="#ff66ff" name="btn-endless" cursor="pointer" padding={5} borderRadius={4} backgroundColor="#220022" textAlign="center">ENDLESS</text>
+    <text fontSize={12} color="#66ff66" name="btn-zen" cursor="pointer" padding={5} borderRadius={4} backgroundColor="#002200" textAlign="center">ZEN</text>
+    <text fontSize={12} color="#ff8844" name="btn-daily" cursor="pointer" padding={5} borderRadius={4} backgroundColor="#221100" textAlign="center">DAILY CHALLENGE</text>
+    <text fontSize={12} color="#88ccff" name="btn-speed" cursor="pointer" padding={5} borderRadius={4} backgroundColor="#112233" textAlign="center">SPEED FLOW</text>
+    <text fontSize={12} color="#ff6666" name="btn-puzzle" cursor="pointer" padding={5} borderRadius={4} backgroundColor="#221111" textAlign="center">PUZZLE PACK</text>
+    <text fontSize={12} color="#aaaaaa" name="btn-practice" cursor="pointer" padding={5} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center">PRACTICE</text>
   </container>
-  <text fontSize={11} color="#666666" name="btn-back" cursor="pointer" hover={{ backgroundColor: "#333333" }} padding={4} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center" marginTop={4}>BACK</text>
+  <text fontSize={11} color="#666666" name="btn-back" cursor="pointer" padding={4} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center" marginTop={4}>BACK</text>
 </container>

@@ -238,10 +238,6 @@
               "color": "#666666",
               "name": "btn-prev",
               "cursor": "pointer",
-              "hover": "{{",
-              "backgroundcolor:": "",
-              "\"#333333\"": "",
-              "}}": "",
               "padding": "{3}",
               "borderradius": "{4}",
               "backgroundcolor": "#1a1a1a",
@@ -273,10 +269,6 @@
               "color": "#666666",
               "name": "btn-next-page",
               "cursor": "pointer",
-              "hover": "{{",
-              "backgroundcolor:": "",
-              "\"#333333\"": "",
-              "}}": "",
               "padding": "{3}",
               "borderradius": "{4}",
               "backgroundcolor": "#1a1a1a",
@@ -303,10 +295,6 @@
           "color": "#666666",
           "name": "btn-back",
           "cursor": "pointer",
-          "hover": "{{",
-          "backgroundcolor:": "",
-          "\"#333333\"": "",
-          "}}": "",
           "padding": "{4}",
           "borderradius": "{4}",
           "backgroundcolor": "#1a1a1a",
@@ -523,7 +511,7 @@
       },
       "end": {
         "line": 20,
-        "column": 201
+        "column": 162
       }
     },
     "uid-21": {
@@ -543,7 +531,7 @@
       },
       "end": {
         "line": 22,
-        "column": 206
+        "column": 167
       }
     },
     "uid-23": {
@@ -553,7 +541,7 @@
       },
       "end": {
         "line": 24,
-        "column": 209
+        "column": 170
       }
     }
   }

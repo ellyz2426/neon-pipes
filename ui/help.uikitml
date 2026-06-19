@@ -33,5 +33,5 @@
     <text fontSize={8} color="#aaaaaa">Puzzle Pack: hand-crafted</text>
     <text fontSize={8} color="#aaaaaa">Practice: free play</text>
   </container>
-  <text fontSize={10} color="#666666" name="btn-back" cursor="pointer" hover={{ backgroundColor: "#333333" }} padding={4} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center" marginTop={4}>BACK</text>
+  <text fontSize={10} color="#666666" name="btn-back" cursor="pointer" padding={4} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center" marginTop={4}>BACK</text>
 </container>

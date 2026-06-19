@@ -18,9 +18,9 @@
     <text fontSize={8} color="#aaaaaa" name="ach14">[ ] ---</text>
   </container>
   <container flexDirection="row" gap={8} marginTop={4}>
-    <text fontSize={9} color="#666666" name="btn-prev" cursor="pointer" hover={{ backgroundColor: "#333333" }} padding={3} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center">&lt; PREV</text>
+    <text fontSize={9} color="#666666" name="btn-prev" cursor="pointer" padding={3} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center">&lt; PREV</text>
     <text fontSize={9} color="#888888" name="page-label">1/1</text>
-    <text fontSize={9} color="#666666" name="btn-next-page" cursor="pointer" hover={{ backgroundColor: "#333333" }} padding={3} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center">NEXT &gt;</text>
+    <text fontSize={9} color="#666666" name="btn-next-page" cursor="pointer" padding={3} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center">NEXT &gt;</text>
   </container>
-  <text fontSize={10} color="#666666" name="btn-back" cursor="pointer" hover={{ backgroundColor: "#333333" }} padding={4} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center" marginTop={3}>BACK</text>
+  <text fontSize={10} color="#666666" name="btn-back" cursor="pointer" padding={4} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center" marginTop={3}>BACK</text>
 </container>

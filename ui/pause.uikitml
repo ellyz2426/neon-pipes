@@ -1,7 +1,7 @@
 <container flexDirection="column" alignItems="center" gap={8} padding={16}>
   <text fontSize={18} fontWeight="bold" color="#00ffcc">PAUSED</text>
   <container flexDirection="column" gap={6} marginTop={8}>
-    <text fontSize={14} color="#00ffcc" name="btn-resume" cursor="pointer" hover={{ backgroundColor: "#004444" }} padding={6} borderRadius={4} backgroundColor="#002222" textAlign="center">RESUME</text>
-    <text fontSize={14} color="#ff6666" name="btn-quit" cursor="pointer" hover={{ backgroundColor: "#440000" }} padding={6} borderRadius={4} backgroundColor="#220000" textAlign="center">QUIT</text>
+    <text fontSize={14} color="#00ffcc" name="btn-resume" cursor="pointer" padding={6} borderRadius={4} backgroundColor="#002222" textAlign="center">RESUME</text>
+    <text fontSize={14} color="#ff6666" name="btn-quit" cursor="pointer" padding={6} borderRadius={4} backgroundColor="#220000" textAlign="center">QUIT</text>
   </container>
 </container>

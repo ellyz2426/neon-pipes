@@ -416,10 +416,6 @@
           "color": "#666666",
           "name": "btn-back",
           "cursor": "pointer",
-          "hover": "{{",
-          "backgroundcolor:": "",
-          "\"#333333\"": "",
-          "}}": "",
           "padding": "{4}",
           "borderradius": "{4}",
           "backgroundcolor": "#1a1a1a",
@@ -786,7 +782,7 @@
       },
       "end": {
         "line": 35,
-        "column": 209
+        "column": 170
       }
     }
   }

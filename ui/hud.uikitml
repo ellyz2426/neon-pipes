@@ -1,8 +1,9 @@
-<container flexDirection="row" gap={12} padding={8} paddingLeft={12} paddingRight={12}>
+<container flexDirection="row" gap={10} padding={8}>
   <text fontSize={11} color="#00ffcc" name="score-label">Score: 0</text>
   <text fontSize={11} color="#ffcc00" name="moves-label">Moves: 0</text>
   <text fontSize={11} color="#ff66ff" name="level-label">Level 1</text>
   <text fontSize={11} color="#66ff66" name="time-label">0:00</text>
-  <text fontSize={11} color="#ff8844" name="combo-label">x1</text>
+  <text fontSize={11} color="#ff8844" name="combo-label"></text>
   <text fontSize={11} color="#88ccff" name="mode-label">Campaign</text>
+  <text fontSize={9} color="#4488ff" name="freeze-label"></text>
 </container>

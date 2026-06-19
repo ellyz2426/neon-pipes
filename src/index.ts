@@ -13,7 +13,7 @@ import {
 // TYPES & CONSTANTS
 // ============================================================
 
-type GameState = 'title' | 'modeselect' | 'difficulty' | 'countdown' | 'playing' | 'paused' | 'gameover' | 'leaderboard' | 'achievements' | 'stats' | 'settings' | 'help' | 'skins';
+type GameState = 'title' | 'modeselect' | 'difficulty' | 'countdown' | 'playing' | 'paused' | 'gameover' | 'leaderboard' | 'achievements' | 'stats' | 'settings' | 'help' | 'skins' | 'campaign';
 type GameMode = 'campaign' | 'timed' | 'endless' | 'zen' | 'daily' | 'speed' | 'puzzle' | 'practice';
 type Difficulty = 'easy' | 'medium' | 'hard';
 type Direction = 'up' | 'right' | 'down' | 'left';
@@ -87,7 +87,55 @@ interface CellData {
   isConnected: boolean;
   flowProgress: number;
   mesh: Group | null;
+  highlightMesh: Mesh | null;
 }
+
+// Undo history entry
+interface MoveEntry {
+  x: number;
+  y: number;
+  prevType: PipeType;
+  newType: PipeType;
+}
+
+// Power-up types
+type PowerUpType = 'hint' | 'undo' | 'freeze' | 'reveal' | 'lock';
+
+interface PowerUp {
+  type: PowerUpType;
+  name: string;
+  desc: string;
+  icon: string;
+  cost: number;
+}
+
+const POWER_UPS: PowerUp[] = [
+  { type: 'hint', name: 'Hint', desc: 'Highlight a pipe that needs rotating', icon: '?', cost: 25 },
+  { type: 'undo', name: 'Undo', desc: 'Undo last move', icon: '<', cost: 0 },
+  { type: 'freeze', name: 'Freeze', desc: 'Pause the timer for 10s', icon: '*', cost: 50 },
+  { type: 'reveal', name: 'Reveal', desc: 'Show the solution for 2s', icon: '!', cost: 100 },
+  { type: 'lock', name: 'Lock', desc: 'Lock a correctly placed pipe', icon: '#', cost: 30 },
+];
+
+// Campaign zone definitions
+interface CampaignZone {
+  name: string;
+  levels: number;
+  gridMin: number;
+  gridMax: number;
+  timeMod: number;
+  desc: string;
+  color: number;
+}
+
+const CAMPAIGN_ZONES: CampaignZone[] = [
+  { name: 'Tutorial Basin', levels: 6, gridMin: 3, gridMax: 5, timeMod: 1.5, desc: 'Learn the basics of pipe flow', color: 0x00ffcc },
+  { name: 'Flow Junction', levels: 6, gridMin: 5, gridMax: 6, timeMod: 1.3, desc: 'The paths grow complex', color: 0x44ff44 },
+  { name: 'Pressure Works', levels: 6, gridMin: 6, gridMax: 7, timeMod: 1.1, desc: 'Speed and precision required', color: 0xffcc00 },
+  { name: 'Neon Labyrinth', levels: 6, gridMin: 7, gridMax: 8, timeMod: 1.0, desc: 'Navigate the maze of pipes', color: 0xff8844 },
+  { name: 'Flux Core', levels: 6, gridMin: 8, gridMax: 9, timeMod: 0.9, desc: 'Only the skilled survive', color: 0xff44ff },
+  { name: 'Quantum Grid', levels: 6, gridMin: 9, gridMax: 10, timeMod: 0.8, desc: 'Master the quantum flow', color: 0xff4444 },
+];
 
 interface Theme {
   name: string;
@@ -415,11 +463,27 @@ class GameStateManager {
   isComplete = false;
   flowAnimProgress = 0;
 
+  // Undo system
+  moveHistory: MoveEntry[] = [];
+  hintsUsed = 0;
+  undosUsed = 0;
+  freezeTimer = 0;
+
+  // Solution tracking (stores solved pipe types for hints/reveal)
+  solvedGrid: PipeType[][] = [];
+
+  // Flow particles along connected path
+  flowParticles: { mesh: Mesh; pathIdx: number; t: number; speed: number }[] = [];
+  connectedPath: [number, number][] = [];
+
   // Grid 3D
   gridGroup = new Group();
   cellMeshes: (Group | null)[][] = [];
   cellSize = 0.12;
   gridOffset = new Vector3();
+
+  // Hover tracking
+  hoveredCell: [number, number] | null = null;
 
   // Stats
   stats: CareerStats;
@@ -464,18 +528,27 @@ class GameStateManager {
     this.gridSize = size;
     this.grid = [];
     this.cellMeshes = [];
+    this.solvedGrid = [];
+    this.moveHistory = [];
+    this.hintsUsed = 0;
+    this.undosUsed = 0;
+    this.freezeTimer = 0;
+    this.hoveredCell = null;
+    this.connectedPath = [];
 
     // Initialize empty grid
     for (let y = 0; y < size; y++) {
       this.grid[y] = [];
       this.cellMeshes[y] = [];
+      this.solvedGrid[y] = [];
       for (let x = 0; x < size; x++) {
         this.grid[y][x] = {
           pipeType: PipeType.STRAIGHT_H,
           isSource: false, isDrain: false, isLocked: false,
-          isConnected: false, flowProgress: 0, mesh: null,
+          isConnected: false, flowProgress: 0, mesh: null, highlightMesh: null,
         };
         this.cellMeshes[y][x] = null;
+        this.solvedGrid[y][x] = PipeType.STRAIGHT_H;
       }
     }
 
@@ -550,6 +623,13 @@ class GameStateManager {
       }
     }
 
+    // Store solved state before scrambling
+    for (let y = 0; y < size; y++) {
+      for (let x = 0; x < size; x++) {
+        this.solvedGrid[y][x] = this.grid[y][x].pipeType;
+      }
+    }
+
     // Now scramble all non-source/drain pipes by rotating randomly
     this.minMoves = 0;
     for (let y = 0; y < size; y++) {
@@ -565,6 +645,31 @@ class GameStateManager {
     }
 
     this.totalPipesInPath = path.length;
+  }
+
+  // Get a hint: find a pipe that's not in its solved position
+  getHintCell(): [number, number] | null {
+    const unsolved: [number, number][] = [];
+    for (let y = 0; y < this.gridSize; y++) {
+      for (let x = 0; x < this.gridSize; x++) {
+        const cell = this.grid[y][x];
+        if (cell.isLocked) continue;
+        if (cell.pipeType !== this.solvedGrid[y][x]) {
+          unsolved.push([x, y]);
+        }
+      }
+    }
+    if (unsolved.length === 0) return null;
+    return unsolved[Math.floor(Math.random() * unsolved.length)];
+  }
+
+  // Undo last move
+  undoLastMove(): MoveEntry | null {
+    const move = this.moveHistory.pop();
+    if (!move) return null;
+    this.grid[move.y][move.x].pipeType = move.prevType;
+    this.moves = Math.max(0, this.moves - 1);
+    return move;
   }
 
   findPipeType(connections: Direction[]): PipeType {
@@ -787,7 +892,7 @@ class GameUISystem extends createSystem({
   pausePanel: { required: [PanelUI, PanelDocument], where: [eq(PanelUI, 'config', './ui/pause.json')] },
   gameoverPanel: { required: [PanelUI, PanelDocument], where: [eq(PanelUI, 'config', './ui/gameover.json')] },
   lbPanel: { required: [PanelUI, PanelDocument], where: [eq(PanelUI, 'config', './ui/leaderboard.json')] },
-  achPanel: { required: [PanelUI, PanelDocument], where: [eq(PanelUI, 'config', './ui/achievements.json')] },
+  achPanel: { required: [PanelUI, PanelDocument], where: [eq(PanelUI, 'config', './ui/achvlist.json')] },
   statsPanel: { required: [PanelUI, PanelDocument], where: [eq(PanelUI, 'config', './ui/stats.json')] },
   settingsPanel: { required: [PanelUI, PanelDocument], where: [eq(PanelUI, 'config', './ui/settings.json')] },
   helpPanel: { required: [PanelUI, PanelDocument], where: [eq(PanelUI, 'config', './ui/help.json')] },
@@ -795,6 +900,8 @@ class GameUISystem extends createSystem({
   countdownPanel: { required: [PanelUI, PanelDocument], where: [eq(PanelUI, 'config', './ui/countdown.json')] },
   skinsPanel: { required: [PanelUI, PanelDocument], where: [eq(PanelUI, 'config', './ui/skins.json')] },
   flowbarPanel: { required: [PanelUI, PanelDocument], where: [eq(PanelUI, 'config', './ui/flowbar.json')] },
+  toolbarPanel: { required: [PanelUI, PanelDocument], where: [eq(PanelUI, 'config', './ui/toolbar.json')] },
+  campaignPanel: { required: [PanelUI, PanelDocument], where: [eq(PanelUI, 'config', './ui/campaign.json')] },
 }) {
   private game!: GameStateManager;
   private audio!: AudioManager;
@@ -850,7 +957,15 @@ class GameUISystem extends createSystem({
         ['btn-puzzle', 'puzzle'], ['btn-practice', 'practice'],
       ];
       for (const [btnId, mode] of modes) {
-        this.wireBtn(e, btnId, () => { this.game.mode = mode; this.game.state = 'difficulty'; });
+        this.wireBtn(e, btnId, () => {
+          this.game.mode = mode;
+          if (mode === 'campaign') {
+            this.updateCampaign();
+            this.game.state = 'campaign';
+          } else {
+            this.game.state = 'difficulty';
+          }
+        });
       }
       this.wireBtn(e, 'btn-back', () => this.game.state = 'title');
     });
@@ -945,6 +1060,68 @@ class GameUISystem extends createSystem({
     });
 
     wirePanel('flowbarPanel', 'flowbar', () => {});
+
+    wirePanel('toolbarPanel', 'toolbar', (e) => {
+      this.wireBtn(e, 'btn-undo', () => {
+        if (this.game.state !== 'playing') return;
+        const move = this.game.undoLastMove();
+        if (move) {
+          this.game.undosUsed++;
+          rebuildCellMesh(this.game, move.x, move.y);
+          this.game.checkConnections();
+          updateGridVisuals(this.game);
+          this.audio.playSfx('click');
+          this.showToast('Move undone');
+        }
+      });
+      this.wireBtn(e, 'btn-hint', () => {
+        if (this.game.state !== 'playing') return;
+        const cell = this.game.getHintCell();
+        if (cell) {
+          this.game.hintsUsed++;
+          highlightHintCell(this.game, cell[0], cell[1]);
+          this.audio.playSfx('click');
+          this.showToast('Hint: Check highlighted pipe');
+        } else {
+          this.showToast('All pipes are correct!');
+        }
+      });
+      this.wireBtn(e, 'btn-freeze', () => {
+        if (this.game.state !== 'playing') return;
+        if (this.game.mode !== 'timed' && this.game.mode !== 'speed') {
+          this.showToast('Freeze only works in timed modes');
+          return;
+        }
+        this.game.freezeTimer = 10;
+        this.audio.playSfx('click');
+        this.showToast('Timer frozen for 10s!');
+      });
+      this.wireBtn(e, 'btn-restart', () => {
+        if (this.game.state !== 'playing') return;
+        startGame(this.game, this.audio);
+      });
+    });
+
+    wirePanel('campaignPanel', 'campaign', (e) => {
+      for (let i = 0; i < 6; i++) {
+        const zone = CAMPAIGN_ZONES[i];
+        this.wireBtn(e, `btn-zone${i + 1}`, () => {
+          const zoneStart = i * 6 + 1;
+          const unlocked = i === 0 || this.game.stats.campaignLevel >= (i * 6);
+          if (!unlocked) {
+            this.showToast(`Complete Zone ${i} first!`);
+            return;
+          }
+          this.game.level = Math.max(zoneStart, Math.min(this.game.stats.campaignLevel + 1, zoneStart + zone.levels - 1));
+          this.game.mode = 'campaign';
+          // Set grid size based on zone
+          const zoneLevel = this.game.level - zoneStart;
+          this.game.gridSize = zone.gridMin + Math.floor(zoneLevel * (zone.gridMax - zone.gridMin) / Math.max(1, zone.levels - 1));
+          startGame(this.game, this.audio);
+        });
+      }
+      this.wireBtn(e, 'btn-back', () => this.game.state = 'modeselect');
+    });
   }
 
   showToast(msg: string) {
@@ -1014,6 +1191,27 @@ class GameUISystem extends createSystem({
     }
   }
 
+  private updateCampaign() {
+    const e = this.panelEntities.get('campaign');
+    if (!e) return;
+    const currentZone = Math.floor(this.game.stats.campaignLevel / 6);
+    const levelInZone = (this.game.stats.campaignLevel % 6);
+    const zone = CAMPAIGN_ZONES[Math.min(currentZone, 5)];
+    this.setText(e, 'zone-name', `Zone ${currentZone + 1}: ${zone.name}`);
+    this.setText(e, 'zone-desc', zone.desc);
+    this.setText(e, 'zone-progress', `Level ${levelInZone + 1} / ${zone.levels}`);
+
+    // Update zone button labels to show progress
+    for (let i = 0; i < 6; i++) {
+      const z = CAMPAIGN_ZONES[i];
+      const zoneStart = i * 6;
+      const cleared = Math.max(0, Math.min(z.levels, this.game.stats.campaignLevel - zoneStart));
+      const unlocked = i === 0 || this.game.stats.campaignLevel >= zoneStart;
+      const label = unlocked ? `Zone ${i + 1}: ${z.name} (${cleared}/${z.levels})` : `Zone ${i + 1}: LOCKED`;
+      this.setText(e, `btn-zone${i + 1}`, label);
+    }
+  }
+
   update(delta: number) {
     // Panel visibility
     const panels: [string, GameState[]][] = [
@@ -1022,6 +1220,7 @@ class GameUISystem extends createSystem({
       ['leaderboard', ['leaderboard']], ['achievements', ['achievements']],
       ['stats', ['stats']], ['settings', ['settings']], ['help', ['help']],
       ['countdown', ['countdown']], ['skins', ['skins']], ['flowbar', ['playing']],
+      ['toolbar', ['playing']], ['campaign', ['campaign']],
     ];
     for (const [name, states] of panels) {
       const e = this.panelEntities.get(name);
@@ -1057,6 +1256,7 @@ class GameUISystem extends createSystem({
         this.setText(hudE, 'time-label', `${min}:${String(sec).padStart(2, '0')}`);
         this.setText(hudE, 'combo-label', this.game.combo > 1 ? `x${this.game.combo}` : '');
         this.setText(hudE, 'mode-label', this.game.mode.charAt(0).toUpperCase() + this.game.mode.slice(1));
+        this.setText(hudE, 'freeze-label', this.game.freezeTimer > 0 ? `FROZEN ${Math.ceil(this.game.freezeTimer)}s` : '');
       }
       // Flow bar
       const flowE = this.panelEntities.get('flowbar');
@@ -1155,7 +1355,9 @@ class GameLogicSystem extends createSystem({}) {
     const cell = this.game.grid[y][x];
     if (cell.isLocked) return;
 
+    const prevType = cell.pipeType;
     cell.pipeType = ccw ? ROTATE_CCW[cell.pipeType] : ROTATE_CW[cell.pipeType];
+    this.game.moveHistory.push({ x, y, prevType, newType: cell.pipeType });
     this.game.moves++;
     this.audio.playSfx('rotate');
 
@@ -1166,6 +1368,7 @@ class GameLogicSystem extends createSystem({}) {
     const prevConnected = this.game.connectedPipes;
     this.game.checkConnections();
     updateGridVisuals(this.game);
+    buildFlowParticles(this.game, worldRef.scene, THEMES[this.game.stats.selectedTheme]);
 
     // Combo logic
     if (this.game.connectedPipes > prevConnected) {
@@ -1310,7 +1513,12 @@ class GameLogicSystem extends createSystem({}) {
 
     // Timer
     if (this.game.state === 'playing') {
-      this.game.timer += delta;
+      // Freeze timer
+      if (this.game.freezeTimer > 0) {
+        this.game.freezeTimer -= delta;
+      } else {
+        this.game.timer += delta;
+      }
       this.game.stats.playTime += delta;
 
       // Combo decay
@@ -1320,7 +1528,7 @@ class GameLogicSystem extends createSystem({}) {
       }
 
       // Time limit for timed mode
-      if (this.game.mode === 'timed' && this.game.timeLimit > 0) {
+      if (this.game.mode === 'timed' && this.game.timeLimit > 0 && this.game.freezeTimer <= 0) {
         if (this.game.timer >= this.game.timeLimit) {
           this.audio.playSfx('fail');
           this.game.state = 'gameover';
@@ -1334,7 +1542,11 @@ class GameLogicSystem extends createSystem({}) {
 
       // Flow animation on connected pipes
       updateFlowAnimation(this.game, delta);
+      updateFlowParticles(this.game, delta);
     }
+
+    // Hint highlight
+    updateHintHighlight(delta);
 
     // XR controller input
     const rightGP = (this.input as any).xr?.gamepads?.right;
@@ -1502,6 +1714,16 @@ function clearGrid(game: GameStateManager) {
     if (fm.parent) fm.parent.remove(fm);
   }
   flowMeshes = [];
+  // Clear flow particles
+  for (const fp of game.flowParticles) {
+    if (fp.mesh.parent) fp.mesh.parent.remove(fp.mesh);
+  }
+  game.flowParticles = [];
+  game.connectedPath = [];
+  // Clear hint highlight
+  if (hintHighlightMesh?.parent) hintHighlightMesh.parent.remove(hintHighlightMesh);
+  hintHighlightMesh = null;
+  hintTimer = 0;
 }
 
 function updateGridVisuals(game: GameStateManager) {
@@ -1535,8 +1757,134 @@ function updateFlowAnimation(game: GameStateManager, _delta: number) {
   if (game.flowAnimProgress > 1) game.flowAnimProgress -= 1;
 }
 
+// Hint highlight: pulse a cell's border to draw attention
+let hintHighlightMesh: Mesh | null = null;
+let hintTimer = 0;
+
+function highlightHintCell(game: GameStateManager, x: number, y: number) {
+  // Remove previous hint
+  if (hintHighlightMesh?.parent) hintHighlightMesh.parent.remove(hintHighlightMesh);
+
+  const pos = getCellWorldPos(game, x, y);
+  const geo = new PlaneGeometry(game.cellSize * 1.05, game.cellSize * 1.05);
+  const mat = new MeshBasicMaterial({
+    color: 0xffff00, transparent: true, opacity: 0.4, blending: AdditiveBlending, side: DoubleSide,
+  });
+  hintHighlightMesh = new Mesh(geo, mat);
+  hintHighlightMesh.position.copy(pos);
+  hintHighlightMesh.position.y -= 0.0005;
+  hintHighlightMesh.rotation.x = -Math.PI / 2;
+  game.gridGroup.add(hintHighlightMesh);
+  hintTimer = 3; // Show for 3 seconds
+}
+
+function updateHintHighlight(delta: number) {
+  if (hintHighlightMesh && hintTimer > 0) {
+    hintTimer -= delta;
+    // Pulse effect
+    const mat = hintHighlightMesh.material as MeshBasicMaterial;
+    mat.opacity = 0.2 + Math.sin(Date.now() * 0.008) * 0.2;
+    if (hintTimer <= 0) {
+      if (hintHighlightMesh.parent) hintHighlightMesh.parent.remove(hintHighlightMesh);
+      hintHighlightMesh = null;
+    }
+  }
+}
+
+// Build flow particles that travel along connected pipes
+function buildFlowParticles(game: GameStateManager, scene: any, theme: Theme) {
+  // Clean up old flow particles
+  for (const fp of game.flowParticles) {
+    if (fp.mesh.parent) fp.mesh.parent.remove(fp.mesh);
+  }
+  game.flowParticles = [];
+
+  // Build connected path from source
+  if (!game.isComplete && game.connectedPipes < 3) return;
+
+  const visited = new Set<string>();
+  const queue: [number, number][] = [game.sourcePos];
+  visited.add(`${game.sourcePos[0]},${game.sourcePos[1]}`);
+  const path: [number, number][] = [game.sourcePos];
+
+  while (queue.length > 0) {
+    const [cx, cy] = queue.shift()!;
+    const cell = game.grid[cy][cx];
+    const connections = PIPE_CONNECTIONS[cell.pipeType];
+    for (const dir of connections) {
+      const [dx, dy] = DIR_OFFSET[dir];
+      const nx = cx + dx, ny = cy + dy;
+      if (nx < 0 || nx >= game.gridSize || ny < 0 || ny >= game.gridSize) continue;
+      if (visited.has(`${nx},${ny}`)) continue;
+      const neighbor = game.grid[ny][nx];
+      if (PIPE_CONNECTIONS[neighbor.pipeType].includes(OPPOSITE[dir])) {
+        visited.add(`${nx},${ny}`);
+        queue.push([nx, ny]);
+        path.push([nx, ny]);
+      }
+    }
+  }
+
+  game.connectedPath = path;
+
+  // Create flow particles
+  const particleCount = Math.min(path.length * 2, 20);
+  const geo = new SphereGeometry(0.006, 4, 4);
+  for (let i = 0; i < particleCount; i++) {
+    const mat = new MeshBasicMaterial({
+      color: theme.flow, transparent: true, opacity: 0.7, blending: AdditiveBlending,
+    });
+    const mesh = new Mesh(geo, mat);
+    mesh.visible = false;
+    scene.add(mesh);
+    game.flowParticles.push({
+      mesh,
+      pathIdx: 0,
+      t: i / particleCount,
+      speed: 0.3 + Math.random() * 0.2,
+    });
+  }
+}
+
+function updateFlowParticles(game: GameStateManager, delta: number) {
+  if (game.connectedPath.length < 2) return;
+  const pathLen = game.connectedPath.length;
+
+  for (const fp of game.flowParticles) {
+    fp.t += fp.speed * delta;
+    if (fp.t >= pathLen) fp.t -= pathLen;
+    if (fp.t < 0) fp.t += pathLen;
+
+    const idx = Math.floor(fp.t);
+    const frac = fp.t - idx;
+    const [cx, cy] = game.connectedPath[idx % pathLen];
+    const [nx, ny] = game.connectedPath[(idx + 1) % pathLen];
+
+    const p1 = getCellWorldPos(game, cx, cy);
+    const p2 = getCellWorldPos(game, nx, ny);
+
+    fp.mesh.position.set(
+      p1.x + (p2.x - p1.x) * frac,
+      p1.y + 0.015 + Math.sin(fp.t * 3) * 0.005,
+      p1.z + (p2.z - p1.z) * frac,
+    );
+    fp.mesh.visible = true;
+    (fp.mesh.material as MeshBasicMaterial).opacity = 0.5 + Math.sin(fp.t * 2 + Date.now() * 0.003) * 0.3;
+  }
+}
+
 function startGame(game: GameStateManager, audio: AudioManager) {
-  const size = game.gridSize;
+  let size = game.gridSize;
+
+  // Campaign zone-based sizing
+  if (game.mode === 'campaign') {
+    const zoneIdx = Math.min(Math.floor((game.level - 1) / 6), 5);
+    const zone = CAMPAIGN_ZONES[zoneIdx];
+    const levelInZone = (game.level - 1) % 6;
+    size = zone.gridMin + Math.floor(levelInZone * (zone.gridMax - zone.gridMin) / Math.max(1, zone.levels - 1));
+    game.gridSize = size;
+  }
+
   const rng = game.mode === 'daily' ? mulberry32(dateSeed()) : mulberry32(Date.now());
 
   game.score = 0;
@@ -1558,6 +1906,7 @@ function startGame(game: GameStateManager, audio: AudioManager) {
   game.checkConnections();
   buildGrid(game, worldRef.scene);
   updateGridVisuals(game);
+  buildFlowParticles(game, worldRef.scene, THEMES[game.stats.selectedTheme]);
 
   audio.playSfx('gameStart');
   game.state = 'countdown';
@@ -1614,7 +1963,7 @@ async function main() {
     { config: './ui/pause.json', pos: [0, 1.6, -2.5] },
     { config: './ui/gameover.json', pos: [0, 1.6, -2.5] },
     { config: './ui/leaderboard.json', pos: [0, 1.6, -2.5] },
-    { config: './ui/achievements.json', pos: [0, 1.6, -2.5] },
+    { config: './ui/achvlist.json', pos: [0, 1.6, -2.5] },
     { config: './ui/stats.json', pos: [0, 1.6, -2.5] },
     { config: './ui/settings.json', pos: [0, 1.6, -2.5] },
     { config: './ui/help.json', pos: [0, 1.6, -2.5] },
@@ -1622,6 +1971,8 @@ async function main() {
     { config: './ui/countdown.json', pos: [0, 0, -0.6], follower: true },
     { config: './ui/skins.json', pos: [0, 1.6, -2.5] },
     { config: './ui/flowbar.json', pos: [0, -0.1, -0.5], follower: true },
+    { config: './ui/toolbar.json', pos: [0, -0.16, -0.5], follower: true },
+    { config: './ui/campaign.json', pos: [0, 1.6, -2.5] },
   ];
 
   for (const pc of panelConfigs) {

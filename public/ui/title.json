@@ -57,10 +57,6 @@
               "color": "#00ffcc",
               "name": "btn-play",
               "cursor": "pointer",
-              "hover": "{{",
-              "backgroundcolor:": "",
-              "\"#004444\"": "",
-              "}}": "",
               "padding": "{6}",
               "borderradius": "{4}",
               "backgroundcolor": "#002222",
@@ -79,10 +75,6 @@
               "color": "#ffcc00",
               "name": "btn-scores",
               "cursor": "pointer",
-              "hover": "{{",
-              "backgroundcolor:": "",
-              "\"#444400\"": "",
-              "}}": "",
               "padding": "{6}",
               "borderradius": "{4}",
               "backgroundcolor": "#222200",
@@ -101,10 +93,6 @@
               "color": "#ff66ff",
               "name": "btn-achievements",
               "cursor": "pointer",
-              "hover": "{{",
-              "backgroundcolor:": "",
-              "\"#440044\"": "",
-              "}}": "",
               "padding": "{6}",
               "borderradius": "{4}",
               "backgroundcolor": "#220022",
@@ -123,10 +111,6 @@
               "color": "#66ff66",
               "name": "btn-stats",
               "cursor": "pointer",
-              "hover": "{{",
-              "backgroundcolor:": "",
-              "\"#004400\"": "",
-              "}}": "",
               "padding": "{6}",
               "borderradius": "{4}",
               "backgroundcolor": "#002200",
@@ -145,10 +129,6 @@
               "color": "#ff8844",
               "name": "btn-themes",
               "cursor": "pointer",
-              "hover": "{{",
-              "backgroundcolor:": "",
-              "\"#442200\"": "",
-              "}}": "",
               "padding": "{6}",
               "borderradius": "{4}",
               "backgroundcolor": "#221100",
@@ -167,10 +147,6 @@
               "color": "#aaaaaa",
               "name": "btn-settings",
               "cursor": "pointer",
-              "hover": "{{",
-              "backgroundcolor:": "",
-              "\"#333333\"": "",
-              "}}": "",
               "padding": "{6}",
               "borderradius": "{4}",
               "backgroundcolor": "#1a1a1a",
@@ -189,10 +165,6 @@
               "color": "#8888ff",
               "name": "btn-help",
               "cursor": "pointer",
-              "hover": "{{",
-              "backgroundcolor:": "",
-              "\"#222244\"": "",
-              "}}": "",
               "padding": "{6}",
               "borderradius": "{4}",
               "backgroundcolor": "#111122",
@@ -276,7 +248,7 @@
       },
       "end": {
         "line": 5,
-        "column": 197
+        "column": 158
       }
     },
     "uid-7": {
@@ -286,7 +258,7 @@
       },
       "end": {
         "line": 6,
-        "column": 206
+        "column": 167
       }
     },
     "uid-8": {
@@ -296,7 +268,7 @@
       },
       "end": {
         "line": 7,
-        "column": 213
+        "column": 174
       }
     },
     "uid-9": {
@@ -306,7 +278,7 @@
       },
       "end": {
         "line": 8,
-        "column": 199
+        "column": 160
       }
     },
     "uid-10": {
@@ -316,7 +288,7 @@
       },
       "end": {
         "line": 9,
-        "column": 205
+        "column": 166
       }
     },
     "uid-11": {
@@ -326,7 +298,7 @@
       },
       "end": {
         "line": 10,
-        "column": 205
+        "column": 166
       }
     },
     "uid-12": {
@@ -336,7 +308,7 @@
       },
       "end": {
         "line": 11,
-        "column": 197
+        "column": 158
       }
     }
   }
