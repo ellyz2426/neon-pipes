@@ -1,66 +1,62 @@
-# Neon Connect VR
+# Neon Pipes VR 🔧
 
-A feature-rich Connect Four game built with [IWSDK](https://iwsdk.dev) (Immersive Web SDK) — playable in both browser and VR.
+A holodeck-style VR pipe flow puzzle built with [IWSDK](https://iwsdk.dev). Rotate pipe segments to connect the source to the drain and guide the flow through the grid.
 
-**[Play Now](https://ellyz2426.github.io/neon-connect/)**
+**[▶ Play Now](https://ellyz2426.github.io/neon-pipes/)**
+
+## Gameplay
+
+- Rotate pipes on a grid to create a continuous path from source (green) to drain (red)
+- Every level is procedurally generated with a guaranteed solvable path
+- Click/trigger to rotate clockwise, grip to rotate counter-clockwise
+- Build combos by rotating pipes quickly — combo multiplier boosts your score
+- 11 pipe types: straight, elbow, T-junction, and cross pieces
 
 ## Features
 
-### Gameplay
-- **8 Game Modes**: Classic, Timed, Blitz, Pop Out, Five-in-a-Row, Daily Challenge, Practice, Versus
-- **3 AI Difficulties**: Easy, Medium, Hard (minimax with alpha-beta pruning)
-- **Combo System**: Chain threats for bonus XP
-- **Replay System**: Review completed games move-by-move
-- **Practice Mode**: Undo moves and get AI hints
-- **Daily Challenges**: Seeded puzzles — same for everyone each day
+- **8 Game Modes**: Campaign (36 levels across 6 zones), Time Attack, Endless, Zen, Daily Challenge, Speed Run, Puzzle, and Practice
+- **3 Difficulty Levels**: Easy (5×5), Medium (7×7), Hard (9×9)
+- **40 Achievements** with unlock tracking
+- **8 Pipe Skins** unlocked through gameplay milestones
+- **5 Color Themes**: Neon Holodeck, Crimson Grid, Toxic Neon, Ultra Violet, Solar Blaze
+- **XP & Level System** with 50 progression levels
+- **Daily Challenges** with seeded PRNG for consistent puzzles
+- **Leaderboards** and career statistics
+- **Procedural Audio**: connection SFX, rotation clicks, ambient drone, combo sounds
 
-### Progression
-- **60 Achievements** across multiple categories
-- **XP & Leveling System** with 15 level titles
-- **10 Disc Skins** unlocked via gameplay milestones
-- **5 Visual Themes**: Neon Holodeck, Crimson Arena, Emerald Void, Solar Forge, Void Chamber
-- **Leaderboard** tracking best scores per mode
-- **Detailed Statistics** per mode and overall
+## Controls
 
-### Visual & Audio
-- **Procedural Background Music** — ambient drones per theme
-- **Holographic Environment** — floating rings, pulsing grid lines, accent pillars
-- **Particle Effects** — drop splashes, win celebrations, ambient floating particles
-- **Column Arrows & Ghost Discs** — visual drop preview
-- **Board Shake & Entry Animation** — elastic board appearance, impact feedback
-- **Win Line Renderer** — animated TubeGeometry connecting winning discs
-- **Timer Warning Effects** — screen flash for timed/blitz modes
-- **AI Thinking Indicator** — animated dots during AI turns
-- **Board Reflection** — shimmer effect below the board
-- **15 PanelUI Spatial Panels** — all UI is spatial, no HTML overlays
-
-### Controls
+### VR (Quest / WebXR)
 | Input | Action |
 |-------|--------|
-| Mouse hover / VR laser | Highlight column |
-| Click / Trigger | Drop disc |
-| 1-7 keys | Quick drop by column |
-| U | Undo (Practice) |
-| H | Hint (Practice) |
-| P / ESC | Pause |
-| R | Rematch (game over) |
-| B (VR) | Pause |
+| Trigger | Rotate pipe clockwise |
+| Grip | Rotate pipe counter-clockwise |
+| B / Y | Pause |
+| Thumbstick | Navigate menus |
 
-### Technical
-- Built with IWSDK 0.4.x on Three.js + ECS
-- Single-file architecture (~2500 LOC)
-- All UI via PanelUI/uikitml — zero HTML overlays
-- XR controller support via RayInteractable
-- localStorage persistence for all progress
-- Procedural audio (no external audio files)
-- Deployed via GitHub Pages
+### Browser
+| Input | Action |
+|-------|--------|
+| Left Click | Rotate pipe clockwise |
+| Right Click | Rotate pipe counter-clockwise |
+| Mouse | Look around |
+| WASD | Move |
+
+## Tech
+
+- Built with [IWSDK](https://iwsdk.dev) 0.4.x (Immersive Web SDK)
+- 15 PanelUI spatial panels — zero HTML DOM UI
+- ECS architecture with dedicated game logic and UI systems
+- Dual runtime: full VR + browser-first with mouselook
+- BFS-based flow validation
+- Procedural grid generation with random walk path algorithm
+- ~1,650 lines TypeScript + 216 lines uikitml
 
 ## Development
 
 ```bash
 npm install
-npm run dev        # Start dev server
-npm run build      # Production build
+npx iwsdk dev
 ```
 
 ## License
