@@ -1,0 +1,14 @@
+<container flexDirection="column" alignItems="center" gap={4} padding={14}>
+  <text fontSize={18} fontWeight="bold" color="#ff8844">PIPE SKINS</text>
+  <container flexDirection="column" gap={3} marginTop={4}>
+    <text fontSize={9} color="#00ffcc" name="skin0" cursor="pointer" hover={{ backgroundColor: "#004444" }} padding={4} borderRadius={3} backgroundColor="#002222" textAlign="center">[*] Neon Cyan (Default)</text>
+    <text fontSize={9} color="#ff6644" name="skin1" cursor="pointer" hover={{ backgroundColor: "#442200" }} padding={4} borderRadius={3} backgroundColor="#221100" textAlign="center">[ ] Solar Flare (50 pipes)</text>
+    <text fontSize={9} color="#ff66ff" name="skin2" cursor="pointer" hover={{ backgroundColor: "#440044" }} padding={4} borderRadius={3} backgroundColor="#220022" textAlign="center">[ ] Plasma Pink (5K score)</text>
+    <text fontSize={9} color="#4488ff" name="skin3" cursor="pointer" hover={{ backgroundColor: "#112244" }} padding={4} borderRadius={3} backgroundColor="#001133" textAlign="center">[ ] Frost Blue (10 games)</text>
+    <text fontSize={9} color="#66ff44" name="skin4" cursor="pointer" hover={{ backgroundColor: "#224400" }} padding={4} borderRadius={3} backgroundColor="#112200" textAlign="center">[ ] Toxic Green (x5 combo)</text>
+    <text fontSize={9} color="#ffcc00" name="skin5" cursor="pointer" hover={{ backgroundColor: "#444400" }} padding={4} borderRadius={3} backgroundColor="#222200" textAlign="center">[ ] Royal Gold (perfect game)</text>
+    <text fontSize={9} color="#8844ff" name="skin6" cursor="pointer" hover={{ backgroundColor: "#221144" }} padding={4} borderRadius={3} backgroundColor="#110033" textAlign="center">[ ] Void Purple (all modes)</text>
+    <text fontSize={9} color="#ff4444" name="skin7" cursor="pointer" hover={{ backgroundColor: "#440000" }} padding={4} borderRadius={3} backgroundColor="#220000" textAlign="center">[ ] Inferno (80% accuracy)</text>
+  </container>
+  <text fontSize={10} color="#666666" name="btn-back" cursor="pointer" hover={{ backgroundColor: "#333333" }} padding={4} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center" marginTop={6}>BACK</text>
+</container>

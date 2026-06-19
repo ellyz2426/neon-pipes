@@ -1,0 +1,793 @@
+{
+  "element": {
+    "sourceTag": "container",
+    "type": "custom",
+    "children": [
+      {
+        "sourceTag": "text",
+        "type": "custom",
+        "children": [
+          "HOW TO PLAY"
+        ],
+        "properties": {
+          "fontsize": "{18}",
+          "fontweight": "bold",
+          "color": "#8888ff"
+        },
+        "dataUid": "uid-2"
+      },
+      {
+        "sourceTag": "container",
+        "type": "custom",
+        "children": [
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "-- GOAL --"
+            ],
+            "properties": {
+              "fontsize": "{9}",
+              "color": "#00ffcc"
+            },
+            "dataUid": "uid-4"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "Rotate pipe segments to create"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-5"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "a continuous path from SOURCE"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-6"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "(green) to DRAIN (red)."
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-7"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "-- BROWSER CONTROLS --"
+            ],
+            "properties": {
+              "fontsize": "{9}",
+              "color": "#00ffcc",
+              "margintop": "{3}"
+            },
+            "dataUid": "uid-8"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "Click: Rotate pipe clockwise"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-9"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "Right-click: Counter-clockwise"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-10"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "ESC/P: Pause"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-11"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "R: Restart level"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-12"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "-- VR CONTROLS --"
+            ],
+            "properties": {
+              "fontsize": "{9}",
+              "color": "#00ffcc",
+              "margintop": "{3}"
+            },
+            "dataUid": "uid-13"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "Trigger: Rotate pipe"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-14"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "Grip: Counter-clockwise"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-15"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "B: Pause"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-16"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "-- PIPE TYPES --"
+            ],
+            "properties": {
+              "fontsize": "{9}",
+              "color": "#00ffcc",
+              "margintop": "{3}"
+            },
+            "dataUid": "uid-17"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "Straight: connects 2 opposite"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-18"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "Elbow: connects 2 adjacent"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-19"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "T-Pipe: connects 3 sides"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-20"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "Cross: connects all 4 sides"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-21"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "-- SCORING --"
+            ],
+            "properties": {
+              "fontsize": "{9}",
+              "color": "#00ffcc",
+              "margintop": "{3}"
+            },
+            "dataUid": "uid-22"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "Connected pipe: 100 pts"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-23"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "Speed bonus: +time remaining"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-24"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "Combo: consecutive correct"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-25"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "-- MODES --"
+            ],
+            "properties": {
+              "fontsize": "{9}",
+              "color": "#00ffcc",
+              "margintop": "{3}"
+            },
+            "dataUid": "uid-26"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "Campaign: 36 levels, 6 zones"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-27"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "Time Attack: beat the clock"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-28"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "Endless: infinite puzzles"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-29"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "Zen: no timer, relax"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-30"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "Daily: same puzzle for all"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-31"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "Speed Flow: rapid small grids"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-32"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "Puzzle Pack: hand-crafted"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-33"
+          },
+          {
+            "sourceTag": "text",
+            "type": "custom",
+            "children": [
+              "Practice: free play"
+            ],
+            "properties": {
+              "fontsize": "{8}",
+              "color": "#aaaaaa"
+            },
+            "dataUid": "uid-34"
+          }
+        ],
+        "properties": {
+          "flexdirection": "column",
+          "gap": "{3}",
+          "margintop": "{4}"
+        },
+        "dataUid": "uid-3"
+      },
+      {
+        "sourceTag": "text",
+        "type": "custom",
+        "children": [
+          "BACK"
+        ],
+        "properties": {
+          "fontsize": "{10}",
+          "color": "#666666",
+          "name": "btn-back",
+          "cursor": "pointer",
+          "hover": "{{",
+          "backgroundcolor:": "",
+          "\"#333333\"": "",
+          "}}": "",
+          "padding": "{4}",
+          "borderradius": "{4}",
+          "backgroundcolor": "#1a1a1a",
+          "textalign": "center",
+          "margintop": "{4}"
+        },
+        "dataUid": "uid-35"
+      }
+    ],
+    "properties": {
+      "flexdirection": "column",
+      "alignitems": "center",
+      "gap": "{4}",
+      "padding": "{12}"
+    },
+    "dataUid": "uid-1"
+  },
+  "classes": {},
+  "ranges": {
+    "uid-1": {
+      "start": {
+        "line": 0,
+        "column": 0
+      },
+      "end": {
+        "line": 36,
+        "column": 12
+      }
+    },
+    "uid-2": {
+      "start": {
+        "line": 1,
+        "column": 2
+      },
+      "end": {
+        "line": 1,
+        "column": 74
+      }
+    },
+    "uid-3": {
+      "start": {
+        "line": 2,
+        "column": 2
+      },
+      "end": {
+        "line": 34,
+        "column": 14
+      }
+    },
+    "uid-4": {
+      "start": {
+        "line": 3,
+        "column": 4
+      },
+      "end": {
+        "line": 3,
+        "column": 56
+      }
+    },
+    "uid-5": {
+      "start": {
+        "line": 4,
+        "column": 4
+      },
+      "end": {
+        "line": 4,
+        "column": 76
+      }
+    },
+    "uid-6": {
+      "start": {
+        "line": 5,
+        "column": 4
+      },
+      "end": {
+        "line": 5,
+        "column": 75
+      }
+    },
+    "uid-7": {
+      "start": {
+        "line": 6,
+        "column": 4
+      },
+      "end": {
+        "line": 6,
+        "column": 69
+      }
+    },
+    "uid-8": {
+      "start": {
+        "line": 7,
+        "column": 4
+      },
+      "end": {
+        "line": 7,
+        "column": 82
+      }
+    },
+    "uid-9": {
+      "start": {
+        "line": 8,
+        "column": 4
+      },
+      "end": {
+        "line": 8,
+        "column": 74
+      }
+    },
+    "uid-10": {
+      "start": {
+        "line": 9,
+        "column": 4
+      },
+      "end": {
+        "line": 9,
+        "column": 76
+      }
+    },
+    "uid-11": {
+      "start": {
+        "line": 10,
+        "column": 4
+      },
+      "end": {
+        "line": 10,
+        "column": 58
+      }
+    },
+    "uid-12": {
+      "start": {
+        "line": 11,
+        "column": 4
+      },
+      "end": {
+        "line": 11,
+        "column": 62
+      }
+    },
+    "uid-13": {
+      "start": {
+        "line": 12,
+        "column": 4
+      },
+      "end": {
+        "line": 12,
+        "column": 77
+      }
+    },
+    "uid-14": {
+      "start": {
+        "line": 13,
+        "column": 4
+      },
+      "end": {
+        "line": 13,
+        "column": 66
+      }
+    },
+    "uid-15": {
+      "start": {
+        "line": 14,
+        "column": 4
+      },
+      "end": {
+        "line": 14,
+        "column": 69
+      }
+    },
+    "uid-16": {
+      "start": {
+        "line": 15,
+        "column": 4
+      },
+      "end": {
+        "line": 15,
+        "column": 54
+      }
+    },
+    "uid-17": {
+      "start": {
+        "line": 16,
+        "column": 4
+      },
+      "end": {
+        "line": 16,
+        "column": 76
+      }
+    },
+    "uid-18": {
+      "start": {
+        "line": 17,
+        "column": 4
+      },
+      "end": {
+        "line": 17,
+        "column": 75
+      }
+    },
+    "uid-19": {
+      "start": {
+        "line": 18,
+        "column": 4
+      },
+      "end": {
+        "line": 18,
+        "column": 72
+      }
+    },
+    "uid-20": {
+      "start": {
+        "line": 19,
+        "column": 4
+      },
+      "end": {
+        "line": 19,
+        "column": 70
+      }
+    },
+    "uid-21": {
+      "start": {
+        "line": 20,
+        "column": 4
+      },
+      "end": {
+        "line": 20,
+        "column": 73
+      }
+    },
+    "uid-22": {
+      "start": {
+        "line": 21,
+        "column": 4
+      },
+      "end": {
+        "line": 21,
+        "column": 73
+      }
+    },
+    "uid-23": {
+      "start": {
+        "line": 22,
+        "column": 4
+      },
+      "end": {
+        "line": 22,
+        "column": 69
+      }
+    },
+    "uid-24": {
+      "start": {
+        "line": 23,
+        "column": 4
+      },
+      "end": {
+        "line": 23,
+        "column": 74
+      }
+    },
+    "uid-25": {
+      "start": {
+        "line": 24,
+        "column": 4
+      },
+      "end": {
+        "line": 24,
+        "column": 72
+      }
+    },
+    "uid-26": {
+      "start": {
+        "line": 25,
+        "column": 4
+      },
+      "end": {
+        "line": 25,
+        "column": 71
+      }
+    },
+    "uid-27": {
+      "start": {
+        "line": 26,
+        "column": 4
+      },
+      "end": {
+        "line": 26,
+        "column": 74
+      }
+    },
+    "uid-28": {
+      "start": {
+        "line": 27,
+        "column": 4
+      },
+      "end": {
+        "line": 27,
+        "column": 73
+      }
+    },
+    "uid-29": {
+      "start": {
+        "line": 28,
+        "column": 4
+      },
+      "end": {
+        "line": 28,
+        "column": 71
+      }
+    },
+    "uid-30": {
+      "start": {
+        "line": 29,
+        "column": 4
+      },
+      "end": {
+        "line": 29,
+        "column": 66
+      }
+    },
+    "uid-31": {
+      "start": {
+        "line": 30,
+        "column": 4
+      },
+      "end": {
+        "line": 30,
+        "column": 72
+      }
+    },
+    "uid-32": {
+      "start": {
+        "line": 31,
+        "column": 4
+      },
+      "end": {
+        "line": 31,
+        "column": 75
+      }
+    },
+    "uid-33": {
+      "start": {
+        "line": 32,
+        "column": 4
+      },
+      "end": {
+        "line": 32,
+        "column": 71
+      }
+    },
+    "uid-34": {
+      "start": {
+        "line": 33,
+        "column": 4
+      },
+      "end": {
+        "line": 33,
+        "column": 65
+      }
+    },
+    "uid-35": {
+      "start": {
+        "line": 35,
+        "column": 2
+      },
+      "end": {
+        "line": 35,
+        "column": 209
+      }
+    }
+  }
+}

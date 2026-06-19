@@ -1,0 +1,26 @@
+<container flexDirection="column" alignItems="center" gap={3} padding={12}>
+  <text fontSize={18} fontWeight="bold" color="#ff66ff">ACHIEVEMENTS</text>
+  <container flexDirection="column" gap={2} marginTop={4}>
+    <text fontSize={8} color="#aaaaaa" name="ach0">[ ] ---</text>
+    <text fontSize={8} color="#aaaaaa" name="ach1">[ ] ---</text>
+    <text fontSize={8} color="#aaaaaa" name="ach2">[ ] ---</text>
+    <text fontSize={8} color="#aaaaaa" name="ach3">[ ] ---</text>
+    <text fontSize={8} color="#aaaaaa" name="ach4">[ ] ---</text>
+    <text fontSize={8} color="#aaaaaa" name="ach5">[ ] ---</text>
+    <text fontSize={8} color="#aaaaaa" name="ach6">[ ] ---</text>
+    <text fontSize={8} color="#aaaaaa" name="ach7">[ ] ---</text>
+    <text fontSize={8} color="#aaaaaa" name="ach8">[ ] ---</text>
+    <text fontSize={8} color="#aaaaaa" name="ach9">[ ] ---</text>
+    <text fontSize={8} color="#aaaaaa" name="ach10">[ ] ---</text>
+    <text fontSize={8} color="#aaaaaa" name="ach11">[ ] ---</text>
+    <text fontSize={8} color="#aaaaaa" name="ach12">[ ] ---</text>
+    <text fontSize={8} color="#aaaaaa" name="ach13">[ ] ---</text>
+    <text fontSize={8} color="#aaaaaa" name="ach14">[ ] ---</text>
+  </container>
+  <container flexDirection="row" gap={8} marginTop={4}>
+    <text fontSize={9} color="#666666" name="btn-prev" cursor="pointer" hover={{ backgroundColor: "#333333" }} padding={3} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center">&lt; PREV</text>
+    <text fontSize={9} color="#888888" name="page-label">1/1</text>
+    <text fontSize={9} color="#666666" name="btn-next-page" cursor="pointer" hover={{ backgroundColor: "#333333" }} padding={3} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center">NEXT &gt;</text>
+  </container>
+  <text fontSize={10} color="#666666" name="btn-back" cursor="pointer" hover={{ backgroundColor: "#333333" }} padding={4} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center" marginTop={3}>BACK</text>
+</container>

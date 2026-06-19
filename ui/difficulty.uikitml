@@ -1,0 +1,9 @@
+<container flexDirection="column" alignItems="center" gap={8} padding={16}>
+  <text fontSize={22} fontWeight="bold" color="#00ffff">DIFFICULTY</text>
+  <container flexDirection="column" gap={6} marginTop={8}>
+    <text fontSize={14} color="#66ff66" name="btn-easy" cursor="pointer" hover={{ backgroundColor: "#004400" }} padding={6} borderRadius={4} backgroundColor="#002200" textAlign="center">EASY (5x5)</text>
+    <text fontSize={14} color="#ffcc00" name="btn-medium" cursor="pointer" hover={{ backgroundColor: "#444400" }} padding={6} borderRadius={4} backgroundColor="#222200" textAlign="center">MEDIUM (7x7)</text>
+    <text fontSize={14} color="#ff6666" name="btn-hard" cursor="pointer" hover={{ backgroundColor: "#440000" }} padding={6} borderRadius={4} backgroundColor="#220000" textAlign="center">HARD (9x9)</text>
+  </container>
+  <text fontSize={11} color="#666666" name="btn-back" cursor="pointer" hover={{ backgroundColor: "#333333" }} padding={4} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center" marginTop={8}>BACK</text>
+</container>

@@ -1,0 +1,16 @@
+<container flexDirection="column" alignItems="center" gap={4} padding={12}>
+  <text fontSize={18} fontWeight="bold" color="#ffcc00">LEADERBOARD</text>
+  <container flexDirection="column" gap={3} marginTop={6}>
+    <text fontSize={9} color="#00ffcc" name="row0">1. ---</text>
+    <text fontSize={9} color="#00ccaa" name="row1">2. ---</text>
+    <text fontSize={9} color="#00aa88" name="row2">3. ---</text>
+    <text fontSize={9} color="#009977" name="row3">4. ---</text>
+    <text fontSize={9} color="#008866" name="row4">5. ---</text>
+    <text fontSize={9} color="#007755" name="row5">6. ---</text>
+    <text fontSize={9} color="#006644" name="row6">7. ---</text>
+    <text fontSize={9} color="#005533" name="row7">8. ---</text>
+    <text fontSize={9} color="#004422" name="row8">9. ---</text>
+    <text fontSize={9} color="#003311" name="row9">10. ---</text>
+  </container>
+  <text fontSize={11} color="#666666" name="btn-back" cursor="pointer" hover={{ backgroundColor: "#333333" }} padding={4} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center" marginTop={6}>BACK</text>
+</container>

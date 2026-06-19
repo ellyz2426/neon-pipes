@@ -1,0 +1,16 @@
+<container flexDirection="column" alignItems="center" gap={6} padding={16}>
+  <text fontSize={20} fontWeight="bold" color="#00ffcc" name="result-title">LEVEL COMPLETE!</text>
+  <container flexDirection="column" gap={4} marginTop={6}>
+    <text fontSize={11} color="#00ffcc" name="result-score">Score: 0</text>
+    <text fontSize={11} color="#ffcc00" name="result-moves">Moves: 0</text>
+    <text fontSize={11} color="#ff66ff" name="result-time">Time: 0:00</text>
+    <text fontSize={11} color="#66ff66" name="result-combo">Best Combo: x1</text>
+    <text fontSize={11} color="#ff8844" name="result-rating">Rating: B</text>
+    <text fontSize={11} color="#88ccff" name="result-pipes">Pipes Connected: 0</text>
+  </container>
+  <container flexDirection="row" gap={8} marginTop={8}>
+    <text fontSize={13} color="#00ffcc" name="btn-next" cursor="pointer" hover={{ backgroundColor: "#004444" }} padding={6} borderRadius={4} backgroundColor="#002222" textAlign="center">NEXT</text>
+    <text fontSize={13} color="#ff8844" name="btn-rematch" cursor="pointer" hover={{ backgroundColor: "#442200" }} padding={6} borderRadius={4} backgroundColor="#221100" textAlign="center">RETRY</text>
+    <text fontSize={13} color="#aaaaaa" name="btn-menu" cursor="pointer" hover={{ backgroundColor: "#333333" }} padding={6} borderRadius={4} backgroundColor="#1a1a1a" textAlign="center">MENU</text>
+  </container>
+</container>
